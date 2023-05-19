@@ -4,18 +4,18 @@
 
 <html>
     <head>
-        <title>Редактировать каталог</title>
+        <title>Поиск каталога</title>
     </head>
     <body>
-        <h1>Редактирование каталога</h1>
+        <h1>Поиск</h1>
         <hr>
-            <sf:form method="POST" action="/catalogues/save" modelAttribute="catalogue">
-                <sf:hidden path="id"/> <br>
-                <sf:label path="name">Название: </sf:label><sf:input path="name"/> <br>
+            <sf:form method="get" action="/catalogues/find" modelAttribute="catalogue">
+                Название: <sf:input path="name"/> <br>
                 <input type="reset">
-                <input type="submit" value="Сохранить изменения">
+                <input type="submit" value="Поиск">
             </sf:form>
         <hr>
         <a href="<c:url value="/catalogues"/>"><button type="button">Вернуться к списку каталогов</button></a>
     </body>
 </html>
+

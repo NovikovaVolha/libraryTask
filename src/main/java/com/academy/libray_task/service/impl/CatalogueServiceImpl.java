@@ -2,9 +2,14 @@ package com.academy.libray_task.service.impl;
 
 import com.academy.libray_task.dto.CatalogueDto;
 import com.academy.libray_task.mapper.CatalogueMapper;
+import com.academy.libray_task.model.entity.Catalogue;
 import com.academy.libray_task.model.repository.CatalogueRepository;
 import com.academy.libray_task.service.CatalogueService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -27,6 +32,13 @@ public class CatalogueServiceImpl implements CatalogueService {
     }
 
     @Override
+    public List<CatalogueDto> findAllPaginated(Integer pageNumber, Integer pageSize) {
+        Pageable pageable = PageRequest.of(pageNumber - 1, pageSize, Sort.Direction.ASC, "id");
+        Page<Catalogue> catalogues = catalogueRepository.findAll(pageable);
+        return catalogueMapper.toDtoList(catalogues.getContent());
+    }
+
+    @Override
     public CatalogueDto findById(Integer id) {
 //        Optional<Course> optionalCourse = courseRepository.findById(id);
 //        Course course = null;
@@ -40,8 +52,8 @@ public class CatalogueServiceImpl implements CatalogueService {
     }
 
     @Override
-    public CatalogueDto findByName(String name) {
-        return catalogueMapper.toDto(catalogueRepository.findCatalogueByNameContainingIgnoreCase(name));
+    public List<CatalogueDto> findByName(String name) {
+        return catalogueMapper.toDtoList(catalogueRepository.findCataloguesByNameContainingIgnoreCase(name));
     }
 
     @Override

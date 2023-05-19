@@ -7,15 +7,14 @@
         <title>Добавить новый каталог</title>
     </head>
     <body>
-    <p>Создание нового каталога</p>
+        <h1>Создание нового каталога</h1>
         <hr>
-            <sf:form action="save" modelAttribute="catalogue">
-                    Название: <sf:input path="name"/> <br>
+            <sf:form action="/catalogues/save" modelAttribute="catalogue">
+                <label for="name">Название: </label><sf:input id="name" path="name"/> <br>
+                <input type="reset">
                 <input type="submit" value="Создать">
             </sf:form>
-
-    <hr>
-
-    <a href="<c:url value="/catalogues"/>">Вернуться к списку каталогов</a>
+        <hr>
+        <a href="<c:url value="/catalogues"/>"><button type="button">Вернуться к списку каталогов</button></a>
     </body>
 </html>

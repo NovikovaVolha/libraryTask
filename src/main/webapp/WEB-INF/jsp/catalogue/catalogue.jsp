@@ -3,12 +3,14 @@
 
 <html>
     <head>
-        <title>Catalogues</title>
+        <title>Каталоги</title>
     </head>
     <body>
         <h1>Каталоги</h1>
         <hr>
         <a href="<c:url value="catalogues/add"/>">Добавить каталог</a>
+        <hr>
+        <a href="<c:url value="catalogues/search"/>">Поиск</a>
         <hr>
         <table class="table table-striped">
             <tr class="thead-light">
@@ -16,16 +18,16 @@
                 <th>Название</th>
                 <th>Действия</th>
             </tr>
-            <c:forEach items="${catalogues}" var="catalogue">
-                <tr>
-                    <td>${catalogue.id}</td>
-                    <td>${catalogue.name}</td>
-                    <td>
-                        <a href="<c:url value="catalogues/update/${catalogue.id}"/>">Редактировать</a>
-                        <a href="<c:url value="catalogues/delete/${catalogue.id}"/>">Удалить</a>
-                    </td>
-                </tr>
-            </c:forEach>
-            </table>
+                <c:forEach items="${catalogues}" var="catalogue">
+                    <tr>
+                        <td>${catalogue.id}</td>
+                        <td>${catalogue.name}</td>
+                        <td>
+                            <a href="<c:url value="catalogues/${catalogue.id}/update"/>">Редактировать</a>
+                            <a href="<c:url value="catalogues/${catalogue.id}/delete"/>">Удалить</a>
+                        </td>
+                    </tr>
+                </c:forEach>
+        </table>
     </body>
 </html>

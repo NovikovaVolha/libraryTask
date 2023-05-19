@@ -10,9 +10,11 @@ public interface CatalogueService {
 
     List<CatalogueDto> findAll();
 
+    List<CatalogueDto> findAllPaginated(Integer pageNumber, Integer pageSize);
+
     CatalogueDto findById(Integer id);
 
-    CatalogueDto findByName(String name);
+    List<CatalogueDto> findByName(String name);
 
     void delete(Integer id);
 
