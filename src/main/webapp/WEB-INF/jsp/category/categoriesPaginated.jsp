@@ -12,7 +12,7 @@
         <hr>
         <a href="<c:url value="/categories/searchForm"/>">Поиск</a>
         <hr>
-        <table class="table table-striped">
+        <table id="allCategories" class="table table-striped">
             <tr class="thead-light">
                 <th>№</th>
                 <th>Название</th>
@@ -28,5 +28,33 @@
                 </tr>
             </c:forEach>
         </table>
+        <br>
+        <br>
+        <br>
+        Total rows: ${totalElements}
+        <hr>
+
+        <c:if test="${currentPage != 1}">
+            <td><a href="<c:url value="?page=${currentPage - 1}"/>">Предыдущая</a></td>
+        </c:if>
+
+        <table id="pagination">
+            <tr>
+                <c:forEach begin="${currentPage}" end="${totalPages}" var="p">
+                    <c:choose>
+                        <c:when test="${currentPage eq p}">
+                            <td>${p}</td>
+                        </c:when>
+                        <c:otherwise>
+                            <td><a href="<c:url value="?page=${p}"/>">${p}</a></td>
+                        </c:otherwise>
+                    </c:choose>
+                </c:forEach>
+            </tr>
+        </table>
+
+        <c:if test="${currentPage lt totalPages}">
+            <td><a href="<c:url value="?page=${currentPage + 1}"/>">Следующая</a></td>
+        </c:if>
     </body>
 </html>

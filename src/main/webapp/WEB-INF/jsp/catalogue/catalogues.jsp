@@ -8,11 +8,10 @@
     <body>
         <h1>Каталоги</h1>
         <hr>
-        <a href="<c:url value="catalogues/add"/>">Добавить каталог</a>
+        <a href="<c:url value="/catalogues/addForm"/>">Добавить категорию</a>
         <hr>
-        <a href="<c:url value="catalogues/search"/>">Поиск</a>
+        <a href="<c:url value="/catalogues/searchForm"/>">Поиск</a>
         <hr>
-        <div class="table">
         <table class="table table-striped">
             <tr class="thead-light">
                 <th>№</th>
@@ -24,17 +23,10 @@
                     <td>${catalogue.id}</td>
                     <td>${catalogue.name}</td>
                     <td>
-                        <a href="<c:url value="catalogues/${catalogue.id}/update"/>">Редактировать</a>
-                        <a href="<c:url value="catalogues/${catalogue.id}/delete"/>">Удалить</a>
+                        <a href="<c:url value="/catalogues/${catalogue.id}/fullInfo"/>">Подробнее</a>
                     </td>
                 </tr>
             </c:forEach>
         </table>
-        </div>
-        <div class="pagination">
-            <c:forEach begin="${currentPage}" end="${totalPages}" var="p">
-                <a href="#">${p}</a>
-            </c:forEach>
-        </div>
     </body>
 </html>

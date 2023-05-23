@@ -32,22 +32,14 @@ public class CatalogueServiceImpl implements CatalogueService {
     }
 
     @Override
-    public List<CatalogueDto> findAllPaginated(Integer pageNumber, Integer pageSize) {
+    public Page<CatalogueDto> findAllPaginated(Integer pageNumber, Integer pageSize) {
         Pageable pageable = PageRequest.of(pageNumber - 1, pageSize, Sort.Direction.ASC, "id");
         Page<Catalogue> catalogues = catalogueRepository.findAll(pageable);
-        return catalogueMapper.toDtoList(catalogues.getContent());
+        return catalogues.map(catalogueMapper::toDto);
     }
 
     @Override
     public CatalogueDto findById(Integer id) {
-//        Optional<Course> optionalCourse = courseRepository.findById(id);
-//        Course course = null;
-//        if (optionalCourse.isPresent()) {
-//            course = optionalCourse.get();
-//        } else {
-//            throw new RuntimeException("Course not found for id : " + id);
-//        }
-//        return course;
         return catalogueMapper.toDto(catalogueRepository.getReferenceById(id));
     }
 
@@ -60,4 +52,5 @@ public class CatalogueServiceImpl implements CatalogueService {
     public void delete(Integer id) {
         catalogueRepository.deleteById(id);
     }
+
 }

@@ -9,13 +9,13 @@
     <body>
         <h1>Редактирование категории</h1>
         <hr>
-            <sf:form method="post" action="/categories/submit" modelAttribute="category">
+            <sf:form id="updateForm" method="post" action="/categories/save" modelAttribute="category">
                 <sf:hidden path="id"/> <br>
                 <sf:label path="name">Название: </sf:label><sf:input path="name"/><br>
                 <input type="reset">
                 <input type="submit" value="Сохранить изменения">
             </sf:form>
         <hr>
-        <a href="<c:url value="/categories"/>"><button type="button">Вернуться к списку категорий</button></a>
+        <a href="<c:url value="/categories/all/page"/>"><button type="button">Вернуться к списку категорий</button></a>
     </body>
 </html>

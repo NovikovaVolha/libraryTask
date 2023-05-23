@@ -1,6 +1,7 @@
 package com.academy.libray_task.service;
 
 import com.academy.libray_task.dto.CatalogueDto;
+import org.springframework.data.domain.Page;
 
 import java.util.List;
 
@@ -10,7 +11,7 @@ public interface CatalogueService {
 
     List<CatalogueDto> findAll();
 
-    List<CatalogueDto> findAllPaginated(Integer pageNumber, Integer pageSize);
+    Page<CatalogueDto> findAllPaginated(Integer pageNumber, Integer pageSize);
 
     CatalogueDto findById(Integer id);
 

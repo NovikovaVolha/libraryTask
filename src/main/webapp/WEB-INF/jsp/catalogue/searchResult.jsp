@@ -3,14 +3,10 @@
 
 <html>
     <head>
-        <title>Каталоги</title>
+        <title>Категория: результат поиска</title>
     </head>
     <body>
-        <h1>Каталоги</h1>
-        <hr>
-        <a href="<c:url value="catalogues/add"/>">Добавить каталог</a>
-        <hr>
-        <a href="<c:url value="catalogues/search"/>">Поиск</a>
+        <h1>Категория: результат поиска</h1>
         <hr>
         <table class="table table-striped">
             <tr class="thead-light">
@@ -18,16 +14,18 @@
                 <th>Название</th>
                 <th>Действия</th>
             </tr>
-                <c:forEach items="${catalogues}" var="catalogue">
+                <c:forEach var="catalogue" items="${catalogues}">
                     <tr>
                         <td>${catalogue.id}</td>
                         <td>${catalogue.name}</td>
                         <td>
-                            <a href="<c:url value="catalogues/${catalogue.id}/update"/>">Редактировать</a>
-                            <a href="<c:url value="catalogues/${catalogue.id}/delete"/>">Удалить</a>
+                            <a href="<c:url value="${catalogue.id}/updateForm"/>">Редактировать</a>
+                            <a href="<c:url value="${catalogue.id}/delete"/>">Удалить</a>
                         </td>
                     </tr>
                 </c:forEach>
         </table>
+        <hr>
+        <a href="<c:url value="/catalogues/all/page"/>"><button type="button">Вернуться к списку каталогов</button></a>
     </body>
 </html>

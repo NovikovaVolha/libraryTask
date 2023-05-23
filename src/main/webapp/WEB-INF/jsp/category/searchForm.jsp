@@ -9,12 +9,12 @@
     <body>
         <h1>Поиск</h1>
         <hr>
-            <sf:form method="get" action="/categories/find" modelAttribute="category">
+            <sf:form method="get" action="/categories/findByName" modelAttribute="category">
                 Название: <sf:input path="name"/> <br>
                 <input type="reset">
                 <input type="submit" value="Поиск">
             </sf:form>
         <hr>
-        <a href="<c:url value="/categories"/>"><button type="button">Вернуться к списку категорий</button></a>
+        <a href="<c:url value="/categories/all/page"/>"><button type="button">Вернуться к списку категорий</button></a>
     </body>
 </html>

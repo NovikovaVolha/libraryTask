@@ -32,10 +32,10 @@ public class CategoryServiceImpl implements CategoryService {
     }
 
     @Override
-    public List<CategoryDto> findAllPaginated(Integer pageNumber, Integer pageSize) {
-        Pageable pageable = PageRequest.of(pageNumber, pageSize, Sort.Direction.ASC, "id");
+    public Page<CategoryDto> findAllPaginated(Integer pageNumber, Integer pageSize) {
+        Pageable pageable = PageRequest.of(pageNumber - 1, pageSize, Sort.Direction.ASC, "id");
         Page<Category> categories = categoryRepository.findAll(pageable);
-        return categoryMapper.toDtoList(categories.getContent());
+        return categories.map(categoryMapper::toDto);
     }
 
     @Override
@@ -49,8 +49,8 @@ public class CategoryServiceImpl implements CategoryService {
     }
 
     @Override
-    public void delete(CategoryDto category) {
-        categoryRepository.delete(categoryMapper.toEntity(category));
+    public void delete(Integer id) {
+        categoryRepository.deleteById(id);
     }
 
 }

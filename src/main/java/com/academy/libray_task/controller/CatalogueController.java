@@ -3,83 +3,76 @@ package com.academy.libray_task.controller;
 import com.academy.libray_task.dto.CatalogueDto;
 import com.academy.libray_task.service.CatalogueService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-
 @Controller
 @RequiredArgsConstructor
-//@RequestMapping("catalogues")
+@RequestMapping("catalogues")
 public class CatalogueController {
 
     private final CatalogueService catalogueService;
 
-    @GetMapping("/catalogues")
+    @GetMapping("/all")
     public String getAllCatalogues(Model model) {
-        List<CatalogueDto> catalogues = catalogueService.findAll();
-        model.addAttribute("catalogues", catalogues);
-        return "catalogue/catalogue";
+        model.addAttribute("catalogues", catalogueService.findAll());
+        return "catalogue/catalogues";
     }
 
-    @GetMapping("/catalogues/page")
-    public String getAllCataloguesPaginated(@RequestParam(defaultValue = "1") Integer pageNumber,
-                                            @RequestParam(defaultValue = "2") Integer pageSize,
-                                            Model model){
-        List<CatalogueDto> catalogues = catalogueService.findAllPaginated(pageNumber, pageSize);
-        Integer totalElements = catalogues.size();
-        Integer totalPages = (totalElements/pageSize) + 1;
-        model.addAttribute("catalogues", catalogues);
-        model.addAttribute("currentPage", pageNumber);
-        model.addAttribute("pageSize", pageSize);
-        model.addAttribute("totalElements", totalElements);
-        model.addAttribute("totalPages", totalPages);
-        return "catalogue/cataloguePaginated";
+    @GetMapping("/all/page")
+    public String getAllCataloguesPaginated(@RequestParam(defaultValue = "1") Integer page,
+                                            @RequestParam(defaultValue = "10") Integer pageSize,
+                                            Model model) {
+        Page<CatalogueDto> catalogues = catalogueService.findAllPaginated(page, pageSize);
+        model.addAttribute("catalogues", catalogues.getContent());
+        model.addAttribute("currentPage", page);
+        model.addAttribute("totalPages", catalogues.getTotalPages());
+        model.addAttribute("totalElements", catalogues.getTotalElements());
+        return "catalogue/cataloguesPaginated";
     }
 
-    @GetMapping("catalogues/search")
-    public String showCatalogueSearchForm(Model model){
+    @GetMapping("/{id}/fullInfo")
+    public String showFullInfo(@PathVariable Integer id, Model model) {
+        model.addAttribute("catalogue", catalogueService.findById(id));
+        return "catalogue/fullInfo";
+    }
+
+    @GetMapping("searchForm")
+    public String showSearchForm(Model model) {
         model.addAttribute("catalogue", new CatalogueDto());
         return "catalogue/searchForm";
     }
 
-    @GetMapping("catalogues/find")
-    public String findCatalogueByName(@RequestParam String name, Model model){
-        List<CatalogueDto> catalogue = catalogueService.findByName(name);
-        model.addAttribute("catalogueByName", catalogue);
-        return "catalogue/catalogueFullInfo";
+    @GetMapping("/findByName")
+    public String findCatalogueByName(@RequestParam String name, Model model) {
+        model.addAttribute("catalogues", catalogueService.findByName(name));
+        return "catalogue/searchResult";
     }
 
-    @GetMapping("/catalogues/add")
-    public String showCatalogueAddForm(Model model) {
-        CatalogueDto catalogue = new CatalogueDto();
-        model.addAttribute("catalogue", catalogue);
+    @GetMapping("/addForm")
+    public String showAddForm(Model model) {
+        model.addAttribute("catalogue", new CatalogueDto());
         return "catalogue/addForm";
     }
 
-    @GetMapping("/catalogues/{id}/update")
-    public String showCatalogueUpdateForm(@PathVariable Integer id, Model model) {
-        CatalogueDto catalogue = catalogueService.findById(id);
-        model.addAttribute("catalogue", catalogue);
+    @PostMapping("/save")
+    public String saveCatalogue(@ModelAttribute CatalogueDto catalogue) {
+        catalogueService.save(catalogue);
+        return "redirect:/catalogues/all/page";
+    }
+
+    @GetMapping("/{id}/updateForm")
+    public String showUpdateForm(@PathVariable Integer id, Model model) {
+        model.addAttribute("catalogue", catalogueService.findById(id));
         return "catalogue/updateForm";
     }
 
-    @PostMapping("/catalogues/save")
-    public String saveCatalogue(@ModelAttribute CatalogueDto catalogue) {
-        catalogueService.save(catalogue);
-        return "redirect:/catalogues";
-    }
-
-//    @GetMapping("/catalogues/{id}/delete")
-//    public String deleteCatalogue(@PathVariable Integer id, Model model) {
-//        catalogueService.delete(id);
-//        return "redirect:/catalogues";
-//    }
-
-    @DeleteMapping("/catalogues/{id}/delete")
-    public void deleteCatalogue(@PathVariable Integer id) {
+    @PostMapping("/{id}/delete")
+    public String deleteCatalogue(@PathVariable Integer id) {
         catalogueService.delete(id);
+        return "redirect:/catalogues/all/page";
     }
 
 }

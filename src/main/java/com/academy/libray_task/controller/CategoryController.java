@@ -3,11 +3,10 @@ package com.academy.libray_task.controller;
 import com.academy.libray_task.dto.CategoryDto;
 import com.academy.libray_task.service.CategoryService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 @Controller
 @RequiredArgsConstructor
@@ -16,66 +15,70 @@ public class CategoryController {
 
     private final CategoryService categoryService;
 
-    @GetMapping
-    public String getAllCategories(Model model){
-        List<CategoryDto> categories = categoryService.findAll();
-        model.addAttribute("categories", categories);
+    @GetMapping("/all")
+    public String getAllCategories(Model model) {
+        model.addAttribute("categories", categoryService.findAll());
         return "category/categories";
     }
 
-    @GetMapping("/page/{page}")
-    public String getAllCategoriesPaginated(@PathVariable Integer page,
-                                            @RequestParam Integer pageSize,
-                                            Model model){
-        List<CategoryDto> categories = categoryService.findAllPaginated(page,pageSize);
-        model.addAttribute("categories", categories);
+    @GetMapping("/all/page")
+    public String getAllCategoriesPaginated(@RequestParam(defaultValue = "1") Integer page,
+                                            @RequestParam(defaultValue = "10") Integer pageSize,
+                                            Model model) {
+        Page<CategoryDto> categories = categoryService.findAllPaginated(page, pageSize);
+        model.addAttribute("categories", categories.getContent());
+        model.addAttribute("currentPage", page);
+        model.addAttribute("totalPages", categories.getTotalPages());
+        model.addAttribute("totalElements", categories.getTotalElements());
         return "category/categoriesPaginated";
     }
 
-    @GetMapping("/search")
-    public String getSearchForm(Model model){
+    @GetMapping("/{id}/fullInfo")
+    public String showFullInfo(@PathVariable Integer id, Model model) {
+        model.addAttribute("category", categoryService.findById(id));
+        return "category/fullInfo";
+    }
+
+    @GetMapping("/searchForm")
+    public String showSearchForm(Model model) {
         model.addAttribute("category", new CategoryDto());
         return "category/searchForm";
     }
 
-    @GetMapping("/find")
-    public String getCategoryByName(@RequestParam String name, Model model){
-        List<CategoryDto> categories = categoryService.findByName(name);
-        model.addAttribute("categories", categories);
-        return "category/fullInfo";
+    @GetMapping("/findByName")
+    public String findCategoryByName(@RequestParam String name, Model model) {
+        model.addAttribute("categories", categoryService.findByName(name));
+        return "category/searchResult";
     }
 
-    @GetMapping("/create")
-    public String createCategory(Model model){
-        CategoryDto category = new CategoryDto();
-        model.addAttribute("category", category);
+    @GetMapping("/addForm")
+    public String showAddForm(Model model) {
+        model.addAttribute("category", new CategoryDto());
         return "category/addForm";
     }
 
-    @PostMapping("/submit")
-    public String saveCategory(@ModelAttribute CategoryDto category){
+    @PostMapping("/save")
+    public String saveCategory(@ModelAttribute CategoryDto category) {
         categoryService.save(category);
-        return "redirect:/categories";
+        return "redirect:/categories/all/page";
     }
 
-    @GetMapping("/{id}/update")
-    public String updateCategory(@PathVariable Integer id, Model model){
-        CategoryDto category = categoryService.findById(id);
-        model.addAttribute("category", category);
+    @GetMapping("/{id}/updateForm")
+    public String showUpdateForm(@PathVariable Integer id, Model model) {
+        model.addAttribute("category", categoryService.findById(id));
         return "category/updateForm";
     }
 
-    @DeleteMapping("/{id}/delete")
-    public String deleteCategory(@PathVariable Integer id){
-        CategoryDto category = categoryService.findById(id);
-        categoryService.delete(category);
-        return "redirect:/categories";
+    @PostMapping("/{id}/delete")
+    public String deleteCategory(@PathVariable Integer id) {
+        categoryService.delete(id);
+        return "redirect:/categories/all/page";
     }
 
-//    @DeleteMapping("/delete")
-//    public void deleteCategory(@RequestParam Integer id){
-//        CategoryDto category = categoryService.findById(id);
-//        categoryService.delete(category);
+//    @GetMapping("/{id}/delete")
+//    public String deleteCategory(@PathVariable Integer id){
+//        categoryService.delete(id);
+//        return "redirect:/categories/all/page";
 //    }
 
 }

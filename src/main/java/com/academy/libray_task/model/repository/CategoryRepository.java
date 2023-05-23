@@ -10,6 +10,5 @@ import java.util.List;
 public interface CategoryRepository extends JpaRepository<Category, Integer> {
 
     List<Category> findCategoryByNameContainingIgnoreCase(String name);
-    Page<Category> findAll(Pageable pageable);
 
 }
