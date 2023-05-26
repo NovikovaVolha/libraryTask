@@ -3,6 +3,7 @@ package com.academy.libray_task.controller;
 import com.academy.libray_task.dto.AuthorDto;
 import com.academy.libray_task.dto.CatalogueDto;
 import com.academy.libray_task.service.AuthorService;
+import com.academy.libray_task.service.SearchUtilService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.*;
 public class AuthorController {
 
     private final AuthorService authorService;
+    private final SearchUtilService searchUtilService;
 
     @GetMapping("/all")
     public String getAllAuthors(Model model) {
@@ -24,8 +26,8 @@ public class AuthorController {
 
     @GetMapping("/all/page")
     public String getAllAuthorsPaginated(@RequestParam(defaultValue = "1") Integer page,
-                                            @RequestParam(defaultValue = "10") Integer pageSize,
-                                            Model model) {
+                                         @RequestParam(defaultValue = "10") Integer pageSize,
+                                         Model model) {
         Page<AuthorDto> authors = authorService.findAllPaginated(page, pageSize);
         model.addAttribute("authors", authors.getContent());
         model.addAttribute("currentPage", page);
@@ -47,12 +49,8 @@ public class AuthorController {
     }
 
     @GetMapping("/findBy")
-    public String findAuthorBy(@RequestParam String paramName, @RequestParam String paramValue, Model model) {
-        if (paramName.equals("name")) {
-            model.addAttribute("authors", authorService.findByName(paramValue));
-        } else if (paramName.equals("surname")) {
-            model.addAttribute("authors", authorService.findBySurname(paramValue));
-        }
+    public String findAuthorByParameter(@RequestParam String paramName, @RequestParam String paramValue, Model model) {
+        model.addAttribute("authors", searchUtilService.findAuthorsByParamName(paramName, paramValue));
         return "author/searchResult";
     }
 

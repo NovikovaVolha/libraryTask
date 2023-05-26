@@ -17,8 +17,9 @@
                         <select form="searchForm" name="paramName">
                             <option name="name" value="name" selected>Имя</option>
                             <option name="surname" value="surname">Фамилия</option>
-                            <option name="passport" value="authorName">№ паспорта</option>
-                            <option name="phoneNumber" value="categoryName">№ телефона</option>
+                            <option name="passport" value="passport">№ паспорта</option>
+                            <option name="phoneNumber" value="phoneNumber">№ телефона</option>
+                            <option name="role" value="role">Читатель/библиотекарь</option>
                         </select>
                     </td>
                     <td>

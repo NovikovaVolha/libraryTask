@@ -1,13 +1,16 @@
 package com.academy.libray_task.service.impl;
 
+import com.academy.libray_task.dto.BookDto;
 import com.academy.libray_task.dto.RequestDto;
 import com.academy.libray_task.dto.UserDto;
-import com.academy.libray_task.dto.enums.RequestStatusDto;
-import com.academy.libray_task.dto.enums.RequestTypeDto;
+import com.academy.libray_task.mapper.BookMapper;
 import com.academy.libray_task.mapper.RequestMapper;
 import com.academy.libray_task.mapper.UserMapper;
 import com.academy.libray_task.model.entity.Request;
+import com.academy.libray_task.model.entity.enums.RequestStatus;
+import com.academy.libray_task.model.entity.enums.RequestType;
 import com.academy.libray_task.model.repository.RequestRepository;
+import com.academy.libray_task.service.BookService;
 import com.academy.libray_task.service.RequestService;
 import com.academy.libray_task.service.UserService;
 import lombok.RequiredArgsConstructor;
@@ -28,6 +31,8 @@ public class RequestServiceImpl implements RequestService {
     private final RequestMapper requestMapper;
     private final UserService userService;
     private final UserMapper userMapper;
+    private final BookService bookService;
+    private final BookMapper bookMapper;
 
     @Override
     public void save(RequestDto request) {
@@ -64,27 +69,46 @@ public class RequestServiceImpl implements RequestService {
     }
 
     @Override
+    public List<RequestDto> findByBook(String title) {
+        List<BookDto> books = bookService.findByTitle(title);
+        return requestMapper.toDtoList(requestRepository.findRequestsByBook(bookMapper.toEntity(books.get(0))));
+    }
+
+    @Override
     public List<RequestDto> findByDateOfIssue(LocalDate dateOfIssue) {
-        return null;
+        return requestMapper.toDtoList(requestRepository.findRequestsByDateOfIssue(dateOfIssue));
     }
 
     @Override
     public List<RequestDto> findByDateOfReturn(LocalDate dateOfReturn) {
-        return null;
+        return requestMapper.toDtoList(requestRepository.findRequestsByDateOfReturn(dateOfReturn));
     }
 
     @Override
-    public List<RequestDto> findByRequestStatus(RequestStatusDto requestStatus) {
-        return null;
+    public List<RequestDto> findByRequestStatus(String requestStatus) {
+        List<Request> requests = switch (requestStatus) {
+            case "ЗАЯВКА_СОЗДАНА" -> requestRepository.findRequestsByRequestStatus(RequestStatus.REQUEST_CREATED);
+            case "КНИГА_ВЫДАНА" -> requestRepository.findRequestsByRequestStatus(RequestStatus.BOOK_ISSUED);
+            case "КНИГА_ВОЗВРАЩЕНА" -> requestRepository.findRequestsByRequestStatus(RequestStatus.BOOK_RETURNED);
+            case "КНИГА_УТЕРЯНА" -> requestRepository.findRequestsByRequestStatus(RequestStatus.BOOK_LOST);
+            default -> throw new IllegalArgumentException("Статус " + requestStatus + " не существует!");
+        };
+        return requestMapper.toDtoList(requests);
     }
 
     @Override
-    public List<RequestDto> findByRequestType(RequestTypeDto requestType) {
-        return null;
+    public List<RequestDto> findByRequestType(String requestType) {
+        List<Request> requests = switch (requestType) {
+            case "В_ЧИТАЛЬНЫЙ_ЗАЛ" -> requestRepository.findRequestsByRequestType(RequestType.READ_IN_READING_ROOM);
+            case "НА_РУКИ" -> requestRepository.findRequestsByRequestType(RequestType.CHECK_OUT);
+            default -> throw new IllegalArgumentException("Тип запроса " + requestType + " не существует!");
+        };
+        return requestMapper.toDtoList(requests);
     }
 
     @Override
     public void delete(Integer id) {
         requestRepository.deleteById(id);
     }
+
 }

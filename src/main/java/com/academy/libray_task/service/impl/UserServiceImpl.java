@@ -2,7 +2,10 @@ package com.academy.libray_task.service.impl;
 
 import com.academy.libray_task.dto.UserDto;
 import com.academy.libray_task.mapper.UserMapper;
+import com.academy.libray_task.model.entity.Request;
 import com.academy.libray_task.model.entity.User;
+import com.academy.libray_task.model.entity.enums.RequestType;
+import com.academy.libray_task.model.entity.enums.Role;
 import com.academy.libray_task.model.repository.UserRepository;
 import com.academy.libray_task.service.UserService;
 import lombok.RequiredArgsConstructor;
@@ -12,6 +15,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
+import java.util.Collections;
 import java.util.List;
 
 @Service
@@ -54,13 +58,23 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public UserDto findByPassport(String passport) {
-        return userMapper.toDto(userRepository.findUserByPassport(passport));
+    public List<UserDto> findByPassport(String passport) {
+        return userMapper.toDtoList(userRepository.findUserByPassport(passport));
     }
 
     @Override
     public List<UserDto> findByPhoneNumber(String phoneNumber) {
         return userMapper.toDtoList(userRepository.findUsersByPhoneNumberContaining(phoneNumber));
+    }
+
+    @Override
+    public List<UserDto> findByRole(String role) {
+        List<User> users = switch (role.toUpperCase()) {
+            case "ЧИТАТЕЛЬ" -> userRepository.findUsersByRolesIn(Collections.singletonList(Role.ROLE_READER));
+            case "БИБЛИОТЕКАРЬ" -> userRepository.findUsersByRolesIn(Collections.singletonList(Role.ROLE_LIBRARIAN));
+            default -> throw new IllegalArgumentException("Статуса пользователя " + role + " не существует!");
+        };
+        return userMapper.toDtoList(users);
     }
 
     @Override

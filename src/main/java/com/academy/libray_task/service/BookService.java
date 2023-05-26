@@ -15,7 +15,7 @@ public interface BookService {
 
     BookDto findById(Integer id);
 
-    BookDto findByISBN(String ISBN);
+    List<BookDto> findByISBN(String ISBN);
 
     List<BookDto> findByTitle(String title);
 

@@ -1,19 +1,13 @@
 package com.academy.libray_task.controller;
 
 import com.academy.libray_task.dto.BookDto;
-import com.academy.libray_task.dto.CatalogueDto;
-import com.academy.libray_task.service.BookService;
-import com.academy.libray_task.service.CatalogueService;
-import com.academy.libray_task.service.CategoryService;
-import com.academy.libray_task.service.PublisherService;
+import com.academy.libray_task.service.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Collection;
-import java.util.Collections;
 
 @Controller
 @RequiredArgsConstructor
@@ -24,6 +18,7 @@ public class BookController {
     private final CatalogueService catalogueService;
     private final CategoryService categoryService;
     private final PublisherService publisherService;
+    private final SearchUtilService searchUtilService;
 
     @GetMapping("/all")
     public String getAllBooks(Model model) {
@@ -33,8 +28,8 @@ public class BookController {
 
     @GetMapping("/all/page")
     public String getAllBooksPaginated(@RequestParam(defaultValue = "1") Integer page,
-                                            @RequestParam(defaultValue = "10") Integer pageSize,
-                                            Model model) {
+                                       @RequestParam(defaultValue = "10") Integer pageSize,
+                                       Model model) {
         Page<BookDto> books = bookService.findAllPaginated(page, pageSize);
         model.addAttribute("books", books.getContent());
         model.addAttribute("currentPage", page);
@@ -56,33 +51,8 @@ public class BookController {
     }
 
     @GetMapping("/findBy")
-    public String findBookBy(@RequestParam String paramName, @RequestParam String paramValue, Model model) {
-        switch (paramName) {
-            case "title":
-                model.addAttribute("books", bookService.findByTitle(paramValue));
-                break;
-            case "ISBN":
-                model.addAttribute("books", Collections.singleton(bookService.findByISBN(String.valueOf(paramValue))));
-                break;
-            case "authorName":
-                model.addAttribute("books", bookService.findByAuthor(paramValue));
-                break;
-            case "categoryName":
-                model.addAttribute("books", bookService.findByCategory(paramValue));
-                break;
-            case "publisherName":
-                model.addAttribute("books", bookService.findByPublisher(paramValue));
-                break;
-            case "yearOfIssue":
-                model.addAttribute("books", bookService.findBooksByYearOfIssue(Integer.valueOf(paramValue)));
-                break;
-            case "catalogueName":
-                model.addAttribute("books", bookService.findByCatalogue(paramValue));
-                break;
-            case "bookAmount":
-                model.addAttribute("books", bookService.findByBookAmount(Integer.valueOf(paramValue)));
-                break;
-        }
+    public String findBookByParameter(@RequestParam String paramName, @RequestParam String paramValue, Model model) {
+        model.addAttribute("books", searchUtilService.findBooksByParamName(paramName, paramValue));
         return "book/searchResult";
     }
 

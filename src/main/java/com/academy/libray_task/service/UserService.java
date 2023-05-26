@@ -19,9 +19,11 @@ public interface UserService {
 
     List<UserDto> findBySurname(String surname);
 
-    UserDto findByPassport(String passport);
+    List<UserDto> findByPassport(String passport);
 
     List<UserDto> findByPhoneNumber(String phoneNumber);
+
+    List<UserDto> findByRole(String role);
 
     void delete(Integer id);
 

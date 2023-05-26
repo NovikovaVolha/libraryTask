@@ -3,29 +3,29 @@
 
 <html>
     <head>
-        <title>Пользователи</title>
+        <title>Заявки</title>
     </head>
     <body>
-        <h1>Пользователи</h1>
+        <h1>Заявки</h1>
         <hr>
-        <a href="<c:url value="/users/addForm"/>"><button type="button">Создать</button></a>
+        <a href="<c:url value="/requests/addForm"/>"><button type="button">Создать</button></a>
         <hr>
-        <a href="<c:url value="/users/searchForm"/>"><button type="button">Поиск</button></a>
+        <a href="<c:url value="/requests/searchForm"/>"><button type="button">Поиск</button></a>
         <hr>
-        <table id="allUsers">
+        <table id="allRequests">
             <tr>
                 <th>№</th>
-                <th>Имя</th>
-                <th>Фамилия</th>
+                <th>Читатель</th>
+                <th>Статус заявки</th>
                 <th>Действия</th>
             </tr>
-            <c:forEach items="${users}" var="user">
+            <c:forEach items="${requests}" var="request">
                 <tr>
-                    <td>${user.id}</td>
-                    <td>${user.name}</td>
-                    <td>${user.surname}</td>
+                    <td>${request.id}</td>
+                    <td>${request.reader}</td>
+                    <td>${request.requestStatus}</td>
                     <td>
-                        <a href="<c:url value="/users/${user.id}/fullInfo"/>">Подробнее</a>
+                        <a href="<c:url value="/requests/${request.id}/fullInfo"/>">Подробнее</a>
                     </td>
                 </tr>
             </c:forEach>
@@ -63,5 +63,5 @@
                 </td>
             </tr>
         </table>
-    </body>
+</body>
 </html>

@@ -9,10 +9,10 @@ CREATE TABLE user
     updated_at              timestamp NULL DEFAULT CURRENT_TIMESTAMP,
     username                VARCHAR(255) DEFAULT NULL,
     password                VARCHAR(255) DEFAULT NULL,
-    account_non_expired     BIT(1)      NOT NULL,
-    account_non_locked      BIT(1)      NOT NULL,
-    credentials_non_expired BIT(1)      NOT NULL,
-    enabled                 BIT(1)      NOT NULL,
+    account_non_expired     BIT(1)      NOT NULL DEFAULT 1,
+    account_non_locked      BIT(1)      NOT NULL DEFAULT 1,
+    credentials_non_expired BIT(1)      NOT NULL DEFAULT 1,
+    enabled                 BIT(1)      NOT NULL DEFAULT 1,
     PRIMARY KEY (id)
 );
 

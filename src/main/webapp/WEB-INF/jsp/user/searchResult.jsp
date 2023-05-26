@@ -27,15 +27,12 @@
                     <td>${user.surname}</td>
                     <td>${user.passport}</td>
                     <td>${user.phoneNumber}</td>
-                    <td>${user.role.name}</td>
+                    <td>${user.role}</td>
                     <td>${user.createdAt}</td>
                     <td>${user.updatedAt}</td>
                     <td>
                         <a href="<c:url value="${user.id}/updateForm"/>"><button type="button">Редактировать</button></a>
-                        <form method="post" action="<c:url value="${user.id}/delete"/>" style="display:inline;">
-                            <input type="hidden" name="id" value="${user.id}">
-                            <input type="submit" value="Удалить">
-                        </form>
+                        <a href="<c:url value="${user.id}/delete"/>"><button type="button">Удалить</button></a>
                     </td>
                 </tr>
             </c:forEach>

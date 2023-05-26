@@ -22,13 +22,15 @@ public interface RequestService {
 
     List<RequestDto> findByLibrarian(String librarianSurname);
 
+    List<RequestDto> findByBook(String title);
+
     List<RequestDto> findByDateOfIssue(LocalDate dateOfIssue);
 
     List<RequestDto> findByDateOfReturn(LocalDate dateOfReturn);
 
-    List<RequestDto> findByRequestStatus(RequestStatusDto requestStatus);
+    List<RequestDto> findByRequestStatus(String requestStatus);
 
-    List<RequestDto> findByRequestType(RequestTypeDto requestType);
+    List<RequestDto> findByRequestType(String requestType);
 
     void delete(Integer id);
 

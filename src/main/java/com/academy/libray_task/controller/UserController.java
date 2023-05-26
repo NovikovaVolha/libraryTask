@@ -2,6 +2,7 @@ package com.academy.libray_task.controller;
 
 import com.academy.libray_task.dto.UserDto;
 import com.academy.libray_task.dto.enums.RoleDto;
+import com.academy.libray_task.service.SearchUtilService;
 import com.academy.libray_task.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -9,12 +10,14 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+
 @Controller
 @RequiredArgsConstructor
 @RequestMapping("/users")
 public class UserController {
 
     private final UserService userService;
+    private final SearchUtilService searchUtilService;
 
     @GetMapping("/all")
     public String getAllUsers(Model model) {
@@ -47,16 +50,8 @@ public class UserController {
     }
 
     @GetMapping("/findBy")
-    public String findUserBy(@RequestParam String paramName, @RequestParam String paramValue, Model model) {
-        if (paramName.equals("name")) {
-            model.addAttribute("users", userService.findByName(paramValue));
-        } else if (paramName.equals("surname")) {
-            model.addAttribute("users", userService.findBySurname(paramValue));
-        } else if (paramName.equals("passport")) {
-            model.addAttribute("users", userService.findByPassport(paramValue));
-        } else if (paramName.equals("phoneNumber")) {
-            model.addAttribute("users", userService.findByPhoneNumber(paramValue));
-        }
+    public String findUserByParameter(@RequestParam String paramName, @RequestParam String paramValue, Model model) {
+        model.addAttribute("users", searchUtilService.findUsersByParamName(paramName, paramValue));
         return "user/searchResult";
     }
 

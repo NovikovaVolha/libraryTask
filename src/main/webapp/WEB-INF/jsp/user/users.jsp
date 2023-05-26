@@ -12,7 +12,7 @@
         <hr>
         <a href="<c:url value="/users/searchForm"/>"><button type="button">Поиск</button></a>
         <hr>
-        <table id="allBooks">
+        <table id="allRequests">
             <tr>
                 <th>№</th>
                 <th>Имя</th>

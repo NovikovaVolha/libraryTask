@@ -1,9 +1,9 @@
 INSERT INTO user (id, name, surname, passport, phone_number, username, password, account_non_expired, account_non_locked, credentials_non_expired, enabled)
 VALUES
-    (1, 'Ivan', 'Ivanov', '2010190C017PB3', '375291234567', 'reader1', '$2a$12$sqm0MyVDNa.musAxnR0jQOrCbf2mqHYDA0yX0hZi1EEerAtkewQSC', 1, 1, 1, 1),
-    (2, 'Fedor', 'Fedorov', '2020285C017PB3', '375299876543', 'reader2', '$2a$12$IQ1O2yFSa9aZKxOhzXaO3.im9WtwQMBPy17D39Htyg15qWBt45/py', 1, 1, 1, 1),
-    (3, 'Anna', 'Karenina', '2030380C017PB3', '375331112233', 'librarian1', '$2a$12$GdgG..TPeH2t.Pskr6kY0OhkXYdcHkd/ntZChLtig13fl8km5T5a6', 1, 1, 1, 1),
-    (4, 'Jane', 'Osten', '2040499C017PB3', '375449998877', 'librarian2', '$2a$12$/eRiF1tP8JSZpDZQM5aVvOmaDTTWF172QCk5ntGDoArPUBOUK.oQm', 1, 1, 1, 1);
+    (1, 'Иван', 'Иванов', '2010190C017PB3', '375291234567', 'reader1', '$2a$12$sqm0MyVDNa.musAxnR0jQOrCbf2mqHYDA0yX0hZi1EEerAtkewQSC', 1, 1, 1, 1),
+    (2, 'Федор', 'Федоров', '2020285C017PB3', '375299876543', 'reader2', '$2a$12$IQ1O2yFSa9aZKxOhzXaO3.im9WtwQMBPy17D39Htyg15qWBt45/py', 1, 1, 1, 1),
+    (3, 'Анна', 'Каренина', '2030380C017PB3', '375331112233', 'librarian1', '$2a$12$GdgG..TPeH2t.Pskr6kY0OhkXYdcHkd/ntZChLtig13fl8km5T5a6', 1, 1, 1, 1),
+    (4, 'Джейн', 'Остен', '2040499C017PB3', '375449998877', 'librarian2', '$2a$12$/eRiF1tP8JSZpDZQM5aVvOmaDTTWF172QCk5ntGDoArPUBOUK.oQm', 1, 1, 1, 1);
 
 INSERT INTO user_roles (user_id, roles)
 VALUES

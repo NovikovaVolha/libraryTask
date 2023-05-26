@@ -2,6 +2,7 @@ package com.academy.libray_task.controller;
 
 import com.academy.libray_task.dto.PublisherDto;
 import com.academy.libray_task.service.PublisherService;
+import com.academy.libray_task.service.SearchUtilService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
@@ -14,9 +15,10 @@ import org.springframework.web.bind.annotation.*;
 public class PublisherController {
 
     private final PublisherService publisherService;
+    private final SearchUtilService searchUtilService;
 
     @GetMapping("/all")
-    public String getAllPublishers(Model model){
+    public String getAllPublishers(Model model) {
         model.addAttribute("publishers", publisherService.findAll());
         return "publisher/publishers";
     }
@@ -24,7 +26,7 @@ public class PublisherController {
     @GetMapping("/all/page")
     public String getAllPublishersPaginated(@RequestParam(defaultValue = "1") Integer page,
                                             @RequestParam(defaultValue = "10") Integer pageSize,
-                                            Model model){
+                                            Model model) {
         Page<PublisherDto> publishers = publisherService.findAllPaginated(page, pageSize);
         model.addAttribute("publishers", publishers.getContent());
         model.addAttribute("currentPage", page);
@@ -46,12 +48,8 @@ public class PublisherController {
     }
 
     @GetMapping("/findBy")
-    public String findCategoryBy(@RequestParam String paramName, @RequestParam String paramValue, Model model) {
-        if (paramName.equals("name")) {
-            model.addAttribute("publishers", publisherService.findByName(paramValue));
-        } else if (paramName.equals("country")){
-            model.addAttribute("publishers", publisherService.findByCountry(paramValue));
-        }
+    public String findCategoryByParameter(@RequestParam String paramName, @RequestParam String paramValue, Model model) {
+        model.addAttribute("publishers", searchUtilService.findPublishersByParamName(paramName, paramValue));
         return "publisher/searchResult";
     }
 

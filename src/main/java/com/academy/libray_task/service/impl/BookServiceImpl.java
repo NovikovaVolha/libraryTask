@@ -48,8 +48,8 @@ public class BookServiceImpl implements BookService {
     }
 
     @Override
-    public BookDto findByISBN(String ISBN) {
-        return bookMapper.toDto(bookRepository.findBookByISBN(ISBN));
+    public List<BookDto> findByISBN(String ISBN) {
+        return bookMapper.toDtoList(bookRepository.findBookByISBN(ISBN));
     }
 
     @Override

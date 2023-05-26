@@ -26,13 +26,12 @@
                 <td>${user.surname}</td>
                 <td>${user.passport}</td>
                 <td>${user.phoneNumber}</td>
-                <td>${user.role.name}</td>
+                <td>${user.role}</td>
                 <td>${user.createdAt}</td>
                 <td>${user.updatedAt}</td>
                 <td>
                     <a href="<c:url value="updateForm"/>"><button type="button">Редактировать</button></a>
-                    <a href="<c:url value="delete"/>"><button type="button">Редактировать</button></a>
-
+                    <a href="<c:url value="delete"/>"><button type="button">Удалить</button></a>
                 </td>
             </tr>
         </table>

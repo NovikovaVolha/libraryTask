@@ -9,7 +9,6 @@ import lombok.NoArgsConstructor;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 
 @Data
 @Builder
@@ -29,7 +28,7 @@ public class RequestDto {
     private LocalDate dateOfReturn;
     private RequestStatusDto requestStatus;
     private RequestTypeDto requestType;
-    private LocalDateTime createdAt;
-    private LocalDateTime updatedAt;
+    private LocalDate createdAt;
+    private LocalDate updatedAt;
 
 }
