@@ -3,13 +3,13 @@
 
 <html>
     <head>
-        <title>Категория: результат поиска</title>
+        <title>Каталог: результат поиска</title>
     </head>
     <body>
-        <h1>Категория: результат поиска</h1>
+        <h1>Результат поиска</h1>
         <hr>
-        <table class="table table-striped">
-            <tr class="thead-light">
+        <table id="searchResult">
+            <tr>
                 <th>№</th>
                 <th>Название</th>
                 <th>Действия</th>
@@ -19,8 +19,11 @@
                         <td>${catalogue.id}</td>
                         <td>${catalogue.name}</td>
                         <td>
-                            <a href="<c:url value="${catalogue.id}/updateForm"/>">Редактировать</a>
-                            <a href="<c:url value="${catalogue.id}/delete"/>">Удалить</a>
+                            <a href="<c:url value="${catalogue.id}/updateForm"/>"><button type="button">Редактировать</button></a>
+                            <form method="post" action="<c:url value="${catalogue.id}/delete"/>" style="display:inline;">
+                                <input type="hidden" name="id" value="${catalogue.id}">
+                                <input type="submit" value="Удалить">
+                            </form>
                         </td>
                     </tr>
                 </c:forEach>

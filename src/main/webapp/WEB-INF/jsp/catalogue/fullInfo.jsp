@@ -8,8 +8,8 @@
     <body>
         <h1>Каталог: информация</h1>
         <hr>
-        <table class="table table-striped">
-            <tr class="thead-light">
+        <table id="fullInfo">
+            <tr>
                 <th>№</th>
                 <th>Название</th>
                 <th>Создание</th>
@@ -25,7 +25,7 @@
                     <a href="<c:url value="updateForm"/>"><button type="button">Редактировать</button></a>
                     <form method="post" action="<c:url value="delete"/>" style="display:inline;">
                         <input type="hidden" name="id" value="${catalogue.id}">
-                        <input type="submit" value="Delete">
+                        <input type="submit" value="Удалить">
                     </form>
                 </td>
             </tr>

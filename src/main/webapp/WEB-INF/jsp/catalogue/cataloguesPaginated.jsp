@@ -3,17 +3,17 @@
 
 <html>
     <head>
-        <title>Категории</title>
+        <title>Каталоги</title>
     </head>
     <body>
-        <h1>Категории</h1>
+        <h1>Каталоги</h1>
         <hr>
-        <a href="<c:url value="/catalogues/addForm"/>">Добавить категорию</a>
+        <a href="<c:url value="/catalogues/addForm"/>"><button type="button">Создать</button></a>
         <hr>
-        <a href="<c:url value="/catalogues/searchForm"/>">Поиск</a>
+        <a href="<c:url value="/catalogues/searchForm"/>"><button type="button">Поиск</button></a>
         <hr>
-        <table id="allCategories" class="table table-striped">
-            <tr class="thead-light">
+        <table id="allCatalogues">
+            <tr>
                 <th>№</th>
                 <th>Название</th>
                 <th>Действия</th>
@@ -31,30 +31,35 @@
         <br>
         <br>
         <br>
-        Total rows: ${totalElements}
         <hr>
-
-            <c:if test="${currentPage != 1}">
-                <td><a href="<c:url value="?page=${currentPage - 1}"/>">Предыдущая</a></td>
-            </c:if>
-
         <table id="pagination">
             <tr>
-                <c:forEach begin="${currentPage}" end="${totalPages}" var="p">
-                    <c:choose>
-                        <c:when test="${currentPage eq p}">
-                            <td>${p}</td>
-                        </c:when>
-                        <c:otherwise>
-                            <td><a href="<c:url value="?page=${p}"/>">${p}</a></td>
-                        </c:otherwise>
-                    </c:choose>
-                </c:forEach>
+                Total rows: ${totalElements}
+            </tr>
+            <tr>
+                <td>
+                    <c:if test="${currentPage != 1}">
+                        <a href="<c:url value="?page=${currentPage - 1}"/>">Предыдущая</a>
+                    </c:if>
+                </td>
+                <td>
+                    <c:forEach begin="${currentPage}" end="${totalPages}" var="p">
+                        <c:choose>
+                            <c:when test="${currentPage eq p}">
+                                ${p}
+                            </c:when>
+                            <c:otherwise>
+                                <a href="<c:url value="?page=${p}"/>">${p}</a>
+                            </c:otherwise>
+                        </c:choose>
+                    </c:forEach>
+                </td>
+                <td>
+                    <c:if test="${currentPage lt totalPages}">
+                        <a href="<c:url value="?page=${currentPage + 1}"/>">Следующая</a>
+                    </c:if>
+                </td>
             </tr>
         </table>
-
-        <c:if test="${currentPage lt totalPages}">
-            <td><a href="<c:url value="?page=${currentPage + 1}"/>">Следующая</a></td>
-        </c:if>
     </body>
 </html>

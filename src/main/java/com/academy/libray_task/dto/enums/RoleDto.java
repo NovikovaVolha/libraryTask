@@ -2,8 +2,8 @@ package com.academy.libray_task.dto.enums;
 
 public enum RoleDto {
 
-    READER("ЧИТАТЕЛЬ"),
-    LIBRARIAN("БИБЛИОТЕКАРЬ");
+    ROLE_READER("ЧИТАТЕЛЬ"),
+    ROLE_LIBRARIAN("БИБЛИОТЕКАРЬ");
 
     private final String name;
 

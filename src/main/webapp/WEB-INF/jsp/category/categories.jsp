@@ -8,12 +8,12 @@
     <body>
         <h1>Категории</h1>
         <hr>
-        <a href="<c:url value="/categories/addForm"/>">Добавить категорию</a>
+        <a href="<c:url value="/categories/addForm"/>"><button type="button">Создать</button></a>
         <hr>
-        <a href="<c:url value="/categories/searchForm"/>">Поиск</a>
+        <a href="<c:url value="/categories/searchForm"/>"><button type="button">Поиск</button></a>
         <hr>
-        <table class="table table-striped">
-            <tr class="thead-light">
+        <table id="allCategories">
+            <tr>
                 <th>№</th>
                 <th>Название</th>
                 <th>Действия</th>

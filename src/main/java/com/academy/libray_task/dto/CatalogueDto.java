@@ -18,4 +18,9 @@ public class CatalogueDto {
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
 
+    @Override
+    public String toString() {
+        return name;
+    }
+
 }

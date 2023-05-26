@@ -5,6 +5,6 @@ public enum RequestStatus {
     REQUEST_CREATED,
     BOOK_ISSUED,
     BOOK_RETURNED,
-    BOOK_LOST;
+    BOOK_LOST
 
 }

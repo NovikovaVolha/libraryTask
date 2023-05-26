@@ -2,10 +2,13 @@ package com.academy.libray_task.model.entity;
 
 import com.academy.libray_task.model.entity.enums.RequestStatus;
 import com.academy.libray_task.model.entity.enums.RequestType;
+import com.sun.istack.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
@@ -25,14 +28,17 @@ public class Request {
 
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "librarian_id")
+    @NotNull
     private User librarian;
 
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "reader_id")
+    @NotNull
     private User reader;
 
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "book_id")
+    @NotNull
     private Book book;
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
@@ -51,11 +57,11 @@ public class Request {
     @Enumerated(EnumType.STRING)
     private RequestType requestType;
 
-    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
+    @CreationTimestamp
     @Column(name = "created_at")
     private LocalDateTime createdAt;
 
-    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
+    @UpdateTimestamp
     @Column(name = "updated_at")
     private LocalDateTime updatedAt;
 

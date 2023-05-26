@@ -11,9 +11,5 @@ public interface AuthorRepository extends JpaRepository<Author, Integer> {
 
     List<Author> findAuthorBySurnameContainingIgnoreCase(String surname);
 
-    List<Author> findAuthorByNameAndSurnameContainingIgnoreCase(String name, String surname);
-
-    //List<Author> findAuthorsByBooks(List<Book> book);
-
 }
 

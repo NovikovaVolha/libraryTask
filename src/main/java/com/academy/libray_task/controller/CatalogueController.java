@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 
 @Controller
 @RequiredArgsConstructor
-@RequestMapping("catalogues")
+@RequestMapping("/catalogues")
 public class CatalogueController {
 
     private final CatalogueService catalogueService;
@@ -34,13 +34,13 @@ public class CatalogueController {
     }
 
     @GetMapping("/{id}/fullInfo")
-    public String showFullInfo(@PathVariable Integer id, Model model) {
+    public String getFullInfo(@PathVariable Integer id, Model model) {
         model.addAttribute("catalogue", catalogueService.findById(id));
         return "catalogue/fullInfo";
     }
 
     @GetMapping("searchForm")
-    public String showSearchForm(Model model) {
+    public String getSearchForm(Model model) {
         model.addAttribute("catalogue", new CatalogueDto());
         return "catalogue/searchForm";
     }
@@ -52,7 +52,7 @@ public class CatalogueController {
     }
 
     @GetMapping("/addForm")
-    public String showAddForm(Model model) {
+    public String getAddForm(Model model) {
         model.addAttribute("catalogue", new CatalogueDto());
         return "catalogue/addForm";
     }
@@ -64,7 +64,7 @@ public class CatalogueController {
     }
 
     @GetMapping("/{id}/updateForm")
-    public String showUpdateForm(@PathVariable Integer id, Model model) {
+    public String getUpdateForm(@PathVariable Integer id, Model model) {
         model.addAttribute("catalogue", catalogueService.findById(id));
         return "catalogue/updateForm";
     }

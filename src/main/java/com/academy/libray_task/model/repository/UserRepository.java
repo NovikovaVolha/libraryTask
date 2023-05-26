@@ -12,12 +12,12 @@ public interface UserRepository extends JpaRepository<User, Integer> {
 
     List<User> findUsersBySurnameContainingIgnoreCase(String surname);
 
-    List<User> findUsersByNameAndSurnameContainingIgnoreCase(String name, String surname);
+    List<User> findUsersByNameOrSurnameContainingIgnoreCase(String name, String surname);
 
     User findUserByPassport(String passport);
 
-    User findUserByPhoneNumber(String phoneNumber);
+    List<User> findUsersByPhoneNumberContaining(String phoneNumber);
 
-    List<User> findUsersByRole(Role role);
+    User findByUsername(String userName);
 
 }

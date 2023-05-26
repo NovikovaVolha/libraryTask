@@ -34,13 +34,13 @@ public class CategoryController {
     }
 
     @GetMapping("/{id}/fullInfo")
-    public String showFullInfo(@PathVariable Integer id, Model model) {
+    public String getFullInfo(@PathVariable Integer id, Model model) {
         model.addAttribute("category", categoryService.findById(id));
         return "category/fullInfo";
     }
 
     @GetMapping("/searchForm")
-    public String showSearchForm(Model model) {
+    public String getSearchForm(Model model) {
         model.addAttribute("category", new CategoryDto());
         return "category/searchForm";
     }
@@ -52,7 +52,7 @@ public class CategoryController {
     }
 
     @GetMapping("/addForm")
-    public String showAddForm(Model model) {
+    public String getAddForm(Model model) {
         model.addAttribute("category", new CategoryDto());
         return "category/addForm";
     }
@@ -64,7 +64,7 @@ public class CategoryController {
     }
 
     @GetMapping("/{id}/updateForm")
-    public String showUpdateForm(@PathVariable Integer id, Model model) {
+    public String getUpdateForm(@PathVariable Integer id, Model model) {
         model.addAttribute("category", categoryService.findById(id));
         return "category/updateForm";
     }
@@ -74,11 +74,5 @@ public class CategoryController {
         categoryService.delete(id);
         return "redirect:/categories/all/page";
     }
-
-//    @GetMapping("/{id}/delete")
-//    public String deleteCategory(@PathVariable Integer id){
-//        categoryService.delete(id);
-//        return "redirect:/categories/all/page";
-//    }
 
 }

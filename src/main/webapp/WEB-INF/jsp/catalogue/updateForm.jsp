@@ -7,13 +7,29 @@
         <title>Редактировать каталог</title>
     </head>
     <body>
-        <h1>Редактирование каталога</h1>
+        <h1>Редактирование</h1>
         <hr>
             <sf:form id="updateForm" method="post" action="/catalogues/save" modelAttribute="catalogue">
-                <sf:hidden path="id"/> <br>
-                <sf:label path="name">Название: </sf:label><sf:input path="name"/><br>
-                <input type="reset">
-                <input type="submit" value="Сохранить изменения">
+                <table id="updateForm">
+                    <tr>
+                        <sf:hidden path="id"/>
+                    </tr>
+                    <tr>
+                        <td>
+                            <sf:label path="name">Название: </sf:label>
+                        </td>
+                        <td>
+                            <sf:input path="name"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>
+                            <input type="reset" value="Сброс">
+                            <input type="submit" value="Сохранить изменения">
+                        </td>
+                    </tr>
+                </table>
             </sf:form>
         <hr>
         <a href="<c:url value="/catalogues/all/page"/>"><button type="button">Вернуться к списку каталогов</button></a>

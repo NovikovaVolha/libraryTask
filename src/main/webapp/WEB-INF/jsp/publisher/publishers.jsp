@@ -1,0 +1,32 @@
+<%@ page contentType="text/html; charset=UTF-8" isELIgnored="false" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
+<html>
+    <head>
+        <title>Издательства</title>
+    </head>
+    <body>
+        <h1>Издательства</h1>
+        <hr>
+        <a href="<c:url value="/publishers/addForm"/>"><button type="button">Создать</button></a>
+        <hr>
+        <a href="<c:url value="/publishers/searchForm"/>"><button type="button">Поиск</button></a>
+        <hr>
+        <table id="allPublishers">
+            <tr>
+                <th>№</th>
+                <th>Название</th>
+                <th></th>
+            </tr>
+            <c:forEach items="${publishers}" var="publisher">
+                <tr>
+                    <td>${publisher.id}</td>
+                    <td>${publisher.name}</td>
+                    <td>
+                        <a href="<c:url value="/publishers/${publisher.id}/fullInfo"/>">Подробнее</a>
+                    </td>
+                </tr>
+            </c:forEach>
+        </table>
+    </body>
+</html>
