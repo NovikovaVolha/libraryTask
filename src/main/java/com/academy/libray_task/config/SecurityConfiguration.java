@@ -41,7 +41,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .and()
                 .authorizeRequests()
                 .antMatchers("/").anonymous();
-//                .antMatchers("/catalogues/**").hasAnyRole("LIBRARIAN")
+                //.antMatchers("/**").hasAnyRole("LIBRARIAN");
 //                .antMatchers("/books/**").hasAnyRole("READER");
     }
 

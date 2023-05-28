@@ -15,7 +15,7 @@
                 <th>Фамилия</th>
                 <th>№ паспорта</th>
                 <th>№ телефона</th>
-                <th></th>
+                <th>Читатель/библиотекарь</th>
                 <th>Создание</th>
                 <th>Редактирование</th>
                 <th>Действия</th>
@@ -26,7 +26,11 @@
                 <td>${user.surname}</td>
                 <td>${user.passport}</td>
                 <td>${user.phoneNumber}</td>
-                <td>${user.role}</td>
+                <td>
+                    <c:forEach items="${user.roles}" var="role">
+                        ${role}
+                    </c:forEach>
+                </td>
                 <td>${user.createdAt}</td>
                 <td>${user.updatedAt}</td>
                 <td>

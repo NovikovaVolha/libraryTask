@@ -22,7 +22,7 @@ public class Catalogue {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @NotNull
+    //@NotNull
     private String name;
 
     @CreationTimestamp
@@ -33,4 +33,8 @@ public class Catalogue {
     @Column(name = "updated_at")
     private LocalDate updatedAt;
 
+    @Override
+    public String toString() {
+        return name;
+    }
 }

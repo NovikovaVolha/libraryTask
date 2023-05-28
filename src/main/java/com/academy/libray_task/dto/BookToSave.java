@@ -5,26 +5,23 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.time.LocalDate;
 import java.util.List;
 
 @Data
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class BookDto {
+public class BookToSave {
 
     private Integer id;
     private String ISBN;
     private String title;
-    private List<AuthorDto> authors;
-    private List<CategoryDto> categories;
-    private PublisherDto publisher;
-    private Integer yearOfIssue;
-    private CatalogueDto catalogue;
-    private Integer bookAmount;
-    private LocalDate createdAt;
-    private LocalDate updatedAt;
+    private List<String> authors;
+    private List<String> categories;
+    private String publisher;
+    private String yearOfIssue;
+    private String catalogue;
+    private String bookAmount;
 
     @Override
     public String toString() {

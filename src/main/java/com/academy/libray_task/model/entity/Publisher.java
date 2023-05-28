@@ -22,10 +22,10 @@ public class Publisher {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @NotNull
+    //@NotNull
     private String name;
 
-    @NotNull
+    //@NotNull
     private String country;
 
     @CreationTimestamp
@@ -35,5 +35,10 @@ public class Publisher {
     @UpdateTimestamp
     @Column(name = "updated_at")
     private LocalDate updatedAt;
+
+    @Override
+    public String toString() {
+        return name + ", " + country;
+    }
 
 }

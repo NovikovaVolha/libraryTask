@@ -23,42 +23,42 @@ public class Book {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @NotNull
+    //@NotNull
     private String ISBN;
 
-    @NotNull
+    //@NotNull
     private String title;
 
     @ManyToMany
     @JoinTable(name = "book_author",
             joinColumns = @JoinColumn(name = "book_id"),
             inverseJoinColumns = @JoinColumn(name = "author_id"))
-    @NotNull
+    //@NotNull
     private List<Author> authors;
 
     @ManyToMany
     @JoinTable(name = "book_category",
             joinColumns = @JoinColumn(name = "book_id"),
             inverseJoinColumns = @JoinColumn(name = "category_id"))
-    @NotNull
+    //@NotNull
     private List<Category> categories;
 
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "publisher_id")
-    @NotNull
+    //@NotNull
     private Publisher publisher;
 
     @Column(name = "year_of_issue")
-    @NotNull
+    //@NotNull
     private Integer yearOfIssue;
 
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "catalogue_id")
-    @NotNull
+    //@NotNull
     private Catalogue catalogue;
 
     @Column(name = "book_amount")
-    @NotNull
+    //@NotNull
     private Integer bookAmount;
 
     @CreationTimestamp
@@ -69,4 +69,8 @@ public class Book {
     @Column(name = "updated_at")
     private LocalDate updatedAt;
 
+    @Override
+    public String toString() {
+        return title;
+    }
 }

@@ -35,7 +35,11 @@
                         <sf:label path="authors">Автор(обязательно)</sf:label>
                     </td>
                     <td>
-                        <sf:input path="authors" required="required" title="Обязательно к заполнению"/>
+                        <sf:select path="authors">
+                            <c:forEach items="${authors}" var="author">
+                                <sf:option value="${author}" label="${author.name} ${author.surname}"/>
+                            </c:forEach>
+                        </sf:select>
                     </td>
                 </tr>
                 <tr>
@@ -43,8 +47,10 @@
                         <sf:label path="categories">Категория(обязательно)</sf:label>
                     </td>
                     <td>
-                        <sf:select path="categories" multiple="true">
-                            <sf:options items="${categories}"/>
+                        <sf:select path="categories">
+                            <c:forEach items="${categories}" var="category">
+                                <sf:option value="${category}" label="${category.name}"/>
+                            </c:forEach>
                         </sf:select>
                     </td>
                 </tr>
@@ -54,7 +60,9 @@
                     </td>
                     <td>
                         <sf:select path="publisher">
-                            <sf:options items="${publishers}"/>
+                            <c:forEach items="${publishers}" var="publisher">
+                                <sf:option value="${publisher}" label="${publisher.name} ${publisher.country}"/>
+                            </c:forEach>
                         </sf:select>
                     </td>
                 </tr>
@@ -72,7 +80,9 @@
                     </td>
                     <td>
                         <sf:select path="catalogue">
-                            <sf:options items="${catalogues}"/>
+                            <c:forEach items="${catalogues}" var="catalogue">
+                                <sf:option value="${catalogue}" label="${catalogue.name}"/>
+                            </c:forEach>
                         </sf:select>
                     </td>
                 </tr>

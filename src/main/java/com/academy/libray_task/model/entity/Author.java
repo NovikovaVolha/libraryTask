@@ -23,10 +23,10 @@ public class Author {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @NotNull
+    //@NotNull
     private String name;
 
-    @NotNull
+    //@NotNull
     private String surname;
 
     @CreationTimestamp
@@ -40,4 +40,8 @@ public class Author {
     @ManyToMany(mappedBy = "authors")
     private List<Book> books;
 
+    @Override
+    public String toString() {
+        return name + " " + surname;
+    }
 }

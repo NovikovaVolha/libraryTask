@@ -48,10 +48,10 @@
                 </tr>
                 <tr>
                     <td>
-                        <sf:label path="role">Читатель/библиотекарь</sf:label>
+                        <sf:label path="roles">Читатель/библиотекарь</sf:label>
                     </td>
                     <td>
-                        <sf:input path="role"/>
+                        <sf:input path="roles"/>
                     </td>
                 </tr>
                 <tr>

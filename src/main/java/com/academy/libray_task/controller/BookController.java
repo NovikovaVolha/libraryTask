@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/books")
 public class BookController {
 
+    private final AuthorService authorService;
     private final BookService bookService;
     private final CatalogueService catalogueService;
     private final CategoryService categoryService;
@@ -59,6 +60,7 @@ public class BookController {
     @GetMapping("/addForm")
     public String getAddForm(Model model) {
         model.addAttribute("book", new BookDto());
+        model.addAttribute("authors", authorService.findAll());
         model.addAttribute("categories", categoryService.findAll());
         model.addAttribute("catalogues", catalogueService.findAll());
         model.addAttribute("publishers", publisherService.findAll());

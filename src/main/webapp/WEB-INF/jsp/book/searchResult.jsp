@@ -36,7 +36,8 @@
                     <td>
                         <c:forEach items="${book.categories}" var="category">
                             ${category}
-                        </c:forEach></td>
+                        </c:forEach>
+                    </td>
                     <td>${book.publisher}</td>
                     <td>${book.yearOfIssue}</td>
                     <td>${book.catalogue}</td>

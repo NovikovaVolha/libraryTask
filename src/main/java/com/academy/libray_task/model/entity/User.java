@@ -29,15 +29,15 @@ public class User implements UserDetails {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @NotNull
+    //@NotNull
     private String name;
 
-    @NotNull
+    //@NotNull
     private String surname;
     private String passport;
 
     @Column(name = "phone_number")
-    @NotNull
+    //@NotNull
     private String phoneNumber;
 
     @CreationTimestamp
@@ -54,8 +54,14 @@ public class User implements UserDetails {
 
     private String username;
     private String password;
+
+    @Column(name = "account_non_expired")
     private boolean accountNonExpired;
+
+    @Column(name = "account_non_locked")
     private boolean accountNonLocked;
+
+    @Column(name = "credentials_non_expired")
     private boolean credentialsNonExpired;
     private boolean enabled;
 

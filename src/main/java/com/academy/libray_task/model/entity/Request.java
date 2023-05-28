@@ -27,17 +27,17 @@ public class Request {
 
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "librarian_id")
-    @NotNull
+    //@NotNull
     private User librarian;
 
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "reader_id")
-    @NotNull
+    //@NotNull
     private User reader;
 
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "book_id")
-    @NotNull
+    //@NotNull
     private Book book;
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)

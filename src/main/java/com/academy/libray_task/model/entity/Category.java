@@ -24,7 +24,7 @@ public class Category {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @NotNull
+    //@NotNull
     private String name;
 
     @CreationTimestamp
@@ -37,5 +37,10 @@ public class Category {
 
     @ManyToMany(mappedBy = "categories")
     private List<Book> books;
+
+    @Override
+    public String toString() {
+        return name;
+    }
 
 }

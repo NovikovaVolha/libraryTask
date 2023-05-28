@@ -20,11 +20,7 @@ public class RequestDto {
     private UserDto librarian;
     private UserDto reader;
     private BookDto book;
-
-    @DateTimeFormat(iso= DateTimeFormat.ISO.DATE)
     private LocalDate dateOfIssue;
-
-    @DateTimeFormat(iso= DateTimeFormat.ISO.DATE)
     private LocalDate dateOfReturn;
     private RequestStatusDto requestStatus;
     private RequestTypeDto requestType;

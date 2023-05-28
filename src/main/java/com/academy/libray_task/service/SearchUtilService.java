@@ -39,7 +39,7 @@ public class SearchUtilService {
             case "surname" -> userService.findBySurname(paramValue);
             case "passport" -> userService.findByPassport(paramValue);
             case "phoneNumber" -> userService.findByPhoneNumber(String.valueOf(paramValue));
-            case "role" -> userService.findByRole(paramValue);
+            case "roles" -> userService.findByRole(paramValue);
             default -> throw new IllegalStateException("Параметр поиска " + paramValue + " не найден.");
         };
     }

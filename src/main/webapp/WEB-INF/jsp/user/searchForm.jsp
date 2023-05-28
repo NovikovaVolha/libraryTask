@@ -19,7 +19,7 @@
                             <option name="surname" value="surname">Фамилия</option>
                             <option name="passport" value="passport">№ паспорта</option>
                             <option name="phoneNumber" value="phoneNumber">№ телефона</option>
-                            <option name="role" value="role">Читатель/библиотекарь</option>
+                            <option name="roles" value="roles">Читатель/библиотекарь</option>
                         </select>
                     </td>
                     <td>
