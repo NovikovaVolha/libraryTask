@@ -69,7 +69,7 @@ public class CatalogueController {
         return "catalogue/updateForm";
     }
 
-    @PostMapping("/{id}/delete")
+    @GetMapping("/{id}/delete")
     public String deleteCatalogue(@PathVariable Integer id) {
         catalogueService.delete(id);
         return "redirect:/catalogues/all/page";

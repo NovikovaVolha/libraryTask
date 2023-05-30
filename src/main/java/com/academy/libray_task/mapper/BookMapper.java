@@ -1,11 +1,8 @@
 package com.academy.libray_task.mapper;
 
 import com.academy.libray_task.dto.*;
-import com.academy.libray_task.model.entity.Book;
-import org.mapstruct.InjectionStrategy;
-import org.mapstruct.Mapper;
-import org.mapstruct.Mapping;
-import org.mapstruct.Named;
+import com.academy.libray_task.model.entity.*;
+import org.mapstruct.*;
 
 import java.util.List;
 
@@ -13,8 +10,20 @@ import java.util.List;
         injectionStrategy = InjectionStrategy.CONSTRUCTOR)
 public interface BookMapper {
 
+//    @Mappings(
+//            {@Mapping(target = "authors", qualifiedByName = "authorToString"),
+//                    @Mapping(target = "categories", qualifiedByName = "categoryToString"),
+//                    @Mapping(target = "publisher", qualifiedByName = "publisherToString"),
+//                    @Mapping(target = "catalogue", qualifiedByName = "catalogueToString")
+//            })
     BookDto toDto(Book book);
 
+//    @Mappings(
+//            {@Mapping(target = "authors", ignore = true),
+//                    @Mapping(target = "categories", ignore = true),
+//                    @Mapping(target = "publisher", ignore = true),
+//                    @Mapping(target = "catalogue", ignore = true)
+//            })
     Book toEntity(BookDto bookDto);
 
     List<BookDto> toDtoList(List<Book> books);
@@ -23,22 +32,33 @@ public interface BookMapper {
 
 
 //    @Named("catalogueToString")
-//    default String toStringFromEntity(CatalogueDto catalogueDto) {
-//        return catalogueDto.getName();
+//    default String toStringFromEntity(Catalogue catalogue) {
+//        return catalogue.getName();
 //    }
 //    @Named("categoryToString")
-//    default String toStringFromDto(CategoryDto categoryDto) {
-//        return categoryDto.getName();
+//    default String toStringFromCategories(List<Category> categories) {
+//        StringBuilder stringBuilder = new StringBuilder();
+//        for (Category category:categories) {
+//            stringBuilder.append(category.getName());
+//        }
+//        return stringBuilder.toString();
 //    }
 //    @Named("publisherToString")
-//    default String toStringFromEntity(PublisherDto publisherDto) {
-//        return publisherDto.getName() + " " + publisherDto.getCountry();
+//    default String toStringFromPublisher(Publisher publisher) {
+//        return publisher.getName() + " " + publisher.getCountry();
 //    }
 //    @Named("authorToString")
-//    default String toStringFromDto(AuthorDto authorDto) {
-//        return authorDto.getName() + " " + authorDto.getSurname();
+//    default String toStringFromAuthors(List<Author> authors) {
+//        StringBuilder stringBuilder = new StringBuilder();
+//        for (Author author:authors) {
+//            stringBuilder.append(author.getName())
+//                         .append(" ")
+//                         .append(author.getSurname());
+//        }
+//        return stringBuilder.toString();
 //    }
-//    String toStringFromDto(BookDto bookDto);
+
+    //    String toStringFromDto(BookDto bookDto);
 
 
 //    String toStringFromEntity(Book book);

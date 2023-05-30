@@ -2,7 +2,6 @@ package com.academy.libray_task.model.entity;
 
 import com.academy.libray_task.model.entity.enums.RequestStatus;
 import com.academy.libray_task.model.entity.enums.RequestType;
-import com.sun.istack.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -27,17 +26,14 @@ public class Request {
 
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "librarian_id")
-    //@NotNull
     private User librarian;
 
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "reader_id")
-    //@NotNull
     private User reader;
 
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "book_id")
-    //@NotNull
     private Book book;
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)

@@ -7,83 +7,87 @@
         <title>Редактировать заявку</title>
     </head>
     <body>
-        <h1>Редактирование</h1>
-        <hr>
-        <sf:form id="updateForm" method="post" action="/requests/save" modelAttribute="request">
-            <table id="updateForm">
-                <tr>
-                    <sf:hidden path="id"/>
-                </tr>
-                <tr>
-                    <td>
-                        <sf:label path="librarian">Библиотекарь</sf:label>
-                    </td>
-                    <td>
-                        <sf:input path="librarian"/>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <sf:label path="reader">Читатель</sf:label>
-                    </td>
-                    <td>
-                        <sf:input path="reader"/>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <sf:label path="book">Книга</sf:label>
-                    </td>
-                    <td>
-                        <sf:input path="book"/>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <sf:label path="dateOfIssue">Дата выдачи</sf:label>
-                    </td>
-                    <td>
-                        <sf:input path="dateOfIssue"/>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <sf:label path="dateOfReturn">Дата возврата</sf:label>
-                    </td>
-                    <td>
-                        <sf:input path="dateOfReturn"/>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <sf:label path="requestStatus">Статус заявки</sf:label>
-                    </td>
-                    <td>
-                        <sf:select path="requestStatus">
-                            <sf:options items="${requestStatuses}"/>
-                        </sf:select>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <sf:label path="requestType">Запрос</sf:label>
-                    </td>
-                    <td>
-                        <sf:select path="requestType">
-                            <sf:options items="${requestTypes}"/>
-                        </sf:select>
-                    </td>
-                </tr>
-                <tr>
-                    <td></td>
-                    <td>
-                        <input type="reset" value="Сброс">
-                        <input type="submit" value="Сохранить изменения">
-                    </td>
-                </tr>
-            </table>
-        </sf:form>
-        <hr>
-        <a href="<c:url value="/requests/all/page"/>"><button type="button">Вернуться к списку заявок</button></a>
+        <div class="container">
+            <h1>Редактирование</h1>
+            <hr>
+                <sf:form id="updateForm" method="post" action="/requests/save" modelAttribute="request">
+            <div class="table-update">
+                <table>
+                    <tr>
+                        <sf:hidden path="id"/>
+                    </tr>
+                    <tr>
+                        <td>
+                            <sf:label path="librarian">Библиотекарь</sf:label>
+                        </td>
+                        <td>
+                            <sf:input path="librarian"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <sf:label path="reader">Читатель</sf:label>
+                        </td>
+                        <td>
+                            <sf:input path="reader"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <sf:label path="book">Книга</sf:label>
+                        </td>
+                        <td>
+                            <sf:input path="book"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <sf:label path="dateOfIssue">Дата выдачи</sf:label>
+                        </td>
+                        <td>
+                            <sf:input path="dateOfIssue"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <sf:label path="dateOfReturn">Дата возврата</sf:label>
+                        </td>
+                        <td>
+                            <sf:input path="dateOfReturn"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <sf:label path="requestStatus">Статус заявки</sf:label>
+                        </td>
+                        <td>
+                            <sf:radiobuttons path="requestStatus" items="${requestStatuses}"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <sf:label path="requestType">Запрос</sf:label>
+                        </td>
+                        <td>
+                            <sf:radiobuttons path="requestType" items="${requestTypes}"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>
+                            <div class="button">
+                                <input type="reset" value="Сброс">
+                                <input type="submit" value="Сохранить изменения">
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+                </sf:form>
+            <hr>
+            <div class="button">
+                <a href="<c:url value="/requests/all/page"/>"><button type="button">К списку заявок</button></a>
+            </div>
+        </div>
     </body>
 </html>

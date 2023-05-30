@@ -1,6 +1,5 @@
 package com.academy.libray_task.model.entity;
 
-import com.sun.istack.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -22,11 +21,7 @@ public class Author {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-
-    //@NotNull
     private String name;
-
-    //@NotNull
     private String surname;
 
     @CreationTimestamp
@@ -44,4 +39,5 @@ public class Author {
     public String toString() {
         return name + " " + surname;
     }
+
 }

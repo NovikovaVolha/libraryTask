@@ -16,8 +16,8 @@ public class BookToSave {
     private Integer id;
     private String ISBN;
     private String title;
-    private List<String> authors;
-    private List<String> categories;
+    private String authors;
+    private String categories;
     private String publisher;
     private String yearOfIssue;
     private String catalogue;

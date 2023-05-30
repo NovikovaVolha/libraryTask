@@ -1,7 +1,6 @@
 package com.academy.libray_task.model.entity;
 
 import com.academy.libray_task.model.entity.enums.Role;
-import com.sun.istack.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -28,16 +27,11 @@ public class User implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-
-    //@NotNull
     private String name;
-
-    //@NotNull
     private String surname;
     private String passport;
 
     @Column(name = "phone_number")
-    //@NotNull
     private String phoneNumber;
 
     @CreationTimestamp

@@ -20,9 +20,9 @@ public interface CatalogueMapper {
 
 
 //    @Named("catalogueToString")
-//    default String toStringFromEntity(CatalogueDto catalogueDto) {
-//        return catalogueDto.getName();
-//    }
+//    default String toStringFromEntity(Catalogue catalogue) {
+//        return catalogue.getName();
+////    }
 //    @Named("stringToCatalogue")
 //    default CatalogueDto toEntityFromString(String catalogue) {
 //        String[] parts = catalogue.split(" ");

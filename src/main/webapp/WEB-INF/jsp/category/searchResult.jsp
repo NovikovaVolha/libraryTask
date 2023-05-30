@@ -6,9 +6,11 @@
         <title>Категория: результат поиска</title>
     </head>
     <body>
+    <div class="container">
         <h1>Результат поиска</h1>
         <hr>
-        <table id="searchResult">
+        <div class="table">
+        <table>
             <tr>
                 <th>№</th>
                 <th>Название</th>
@@ -19,16 +21,21 @@
                         <td>${category.id}</td>
                         <td>${category.name}</td>
                         <td>
-                            <a href="<c:url value="${category.id}/updateForm"/>"><button type="button">Редактировать</button></a>
-                            <form method="post" action="<c:url value="${category.id}/delete"/>" style="display:inline;">
-                                <input type="hidden" name="id" value="${category.id}">
-                                <input type="submit" value="Удалить">
-                            </form>
+                            <div class="button">
+                                <a href="<c:url value="${category.id}/updateForm"/>"><button type="button">Редактировать</button></a>
+                            </div>
+                            <div class="button">
+                                <a href="<c:url value="${category.id}/delete"/>"><button type="button">Удалить</button></a>
+                            </div>
                         </td>
                     </tr>
                 </c:forEach>
         </table>
+        </div>
         <hr>
-        <a href="<c:url value="/categories/all/page"/>"><button type="button">Вернуться к списку категорий</button></a>
+        <div class="button">
+            <a href="<c:url value="/categories/all/page"/>"><button type="button">Вернуться к списку категорий</button></a>
+        </div>
+    </div>
     </body>
 </html>

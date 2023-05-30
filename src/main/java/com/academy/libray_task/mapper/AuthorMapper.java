@@ -3,7 +3,6 @@ package com.academy.libray_task.mapper;
 import com.academy.libray_task.dto.AuthorDto;
 import com.academy.libray_task.model.entity.Author;
 import org.mapstruct.Mapper;
-import org.mapstruct.Named;
 
 import java.util.List;
 

@@ -7,31 +7,39 @@
         <title>Редактировать категорию</title>
     </head>
     <body>
-        <h1>Редактирование</h1>
-        <hr>
-            <sf:form id="updateForm" method="post" action="/categories/save" modelAttribute="category">
-                <table id="updateForm">
-                    <tr>
-                        <sf:hidden path="id"/>
-                    </tr>
-                    <tr>
-                        <td>
-                            <sf:label path="name">Название: </sf:label>
-                        </td>
-                        <td>
-                            <sf:input path="name"/>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td>
-                            <input type="reset" value="Сброс">
-                            <input type="submit" value="Сохранить изменения">
-                        </td>
-                    </tr>
-                </table>
-            </sf:form>
-        <hr>
-        <a href="<c:url value="/categories/all/page"/>"><button type="button">Вернуться к списку категорий</button></a>
+        <div class="container">
+            <h1>Редактирование</h1>
+            <hr>
+                <sf:form id="updateForm" method="post" action="/categories/save" modelAttribute="category">
+            <div class="table-update">
+                    <table>
+                        <tr>
+                            <sf:hidden path="id"/>
+                        </tr>
+                        <tr>
+                            <td>
+                                <sf:label path="name">Название: </sf:label>
+                            </td>
+                            <td>
+                                <sf:input path="name"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>
+                                <div class="button">
+                                    <input type="reset" value="Сброс">
+                                    <input type="submit" value="Сохранить изменения">
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+            </div>
+                </sf:form>
+            <hr>
+            <div class="button">
+                <a href="<c:url value="/categories/all/page"/>"><button type="button">К списку категорий</button></a>
+            </div>
+        </div>
     </body>
 </html>

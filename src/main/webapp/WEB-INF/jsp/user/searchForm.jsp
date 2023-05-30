@@ -7,35 +7,42 @@
         <title>Поиск пользователя</title>
     </head>
     <body>
-        <h1>Поиск</h1>
-        <hr>
-
-        <form id="searchForm" action="/users/findBy" method="get">
-            <table>
-                <tr>
-                    <td>
-                        <select form="searchForm" name="paramName">
-                            <option name="name" value="name" selected>Имя</option>
-                            <option name="surname" value="surname">Фамилия</option>
-                            <option name="passport" value="passport">№ паспорта</option>
-                            <option name="phoneNumber" value="phoneNumber">№ телефона</option>
-                            <option name="roles" value="roles">Читатель/библиотекарь</option>
-                        </select>
-                    </td>
-                    <td>
-                        <input form="searchForm" name="paramValue" type="text" size="40">
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <input type="reset" value="Сброс">
-                        <input type="submit" value="Поиск">
-                    </td>
-                </tr>
-            </table>
-        </form>
-        <hr>
-        <a href="<c:url value="/users/all/page"/>"><button type="button">Вернуться к списку пользователей</button></a>
+        <div class="container">
+            <h1>Поиск</h1>
+            <hr>
+            <form id="searchForm" action="/users/findBy" method="get">
+                <div class="table-search">
+                    <table>
+                        <tr>
+                            <td>
+                                <select form="searchForm" name="paramName">
+                                    <option name="name" value="name" selected>Имя</option>
+                                    <option name="surname" value="surname">Фамилия</option>
+                                    <option name="passport" value="passport">№ паспорта</option>
+                                    <option name="phoneNumber" value="phoneNumber">№ телефона</option>
+                                    <option name="roles" value="roles">Читатель/библиотекарь</option>
+                                </select>
+                            </td>
+                            <td>
+                                <input form="searchForm" name="paramValue" type="text" size="40">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="button">
+                                    <input type="reset" value="Сброс">
+                                    <input type="submit" value="Поиск">
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </form>
+            <hr>
+            <div class="button">
+                <a href="<c:url value="/users/all/page"/>"><button type="button">К списку пользователей</button></a>
+            </div>
+        </div>
     </body>
 </html>
 

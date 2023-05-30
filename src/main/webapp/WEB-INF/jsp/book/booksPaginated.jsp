@@ -6,62 +6,78 @@
         <title>Книги</title>
     </head>
     <body>
-        <h1>Книги</h1>
-        <hr>
-        <a href="<c:url value="/books/addForm"/>"><button type="button">Создать</button></a>
-        <hr>
-        <a href="<c:url value="/books/searchForm"/>"><button type="button">Поиск</button></a>
-        <hr>
-        <table id="allBooks">
-            <tr>
-                <th>№</th>
-                <th>Автор</th>
-                <th>Заголовок</th>
-                <th>Действия</th>
-            </tr>
-            <c:forEach items="${books}" var="book">
-                <tr>
-                    <td>${book.id}</td>
-                    <td>${book.authors}</td>
-                    <td>${book.title}</td>
-                    <td>
-                        <a href="<c:url value="/books/${book.id}/fullInfo"/>">Подробнее</a>
-                    </td>
-                </tr>
-            </c:forEach>
-        </table>
-        <br>
-        <br>
-        <br>
-        <hr>
-        <table id="pagination">
-            <tr>
-                Total rows: ${totalElements}
-            </tr>
-            <tr>
-                <td>
-                    <c:if test="${currentPage != 1}">
-                        <a href="<c:url value="?page=${currentPage - 1}"/>">Предыдущая</a>
-                    </c:if>
-                </td>
-                <td>
-                    <c:forEach begin="${currentPage}" end="${totalPages}" var="p">
-                        <c:choose>
-                            <c:when test="${currentPage eq p}">
-                                ${p}
-                            </c:when>
-                            <c:otherwise>
-                                <a href="<c:url value="?page=${p}"/>">${p}</a>
-                            </c:otherwise>
-                        </c:choose>
+        <div class="container">
+            <h1>Книги</h1>
+            <hr>
+            <div class="button">
+                <a href="<c:url value="/books/addForm"/>"><button type="button">Создать</button></a>
+            </div>
+            <hr>
+            <div class="button">
+                <a href="<c:url value="/books/searchForm"/>"><button type="button">Поиск</button></a>
+            </div>
+            <div class="table">
+                <table id="allBooks">
+                    <tr>
+                        <th>№</th>
+                        <th>Автор</th>
+                        <th>Заголовок</th>
+                        <th>Действия</th>
+                    </tr>
+                    <c:forEach items="${books}" var="book">
+                        <tr>
+                            <td>${book.id}</td>
+                            <td>
+                                <c:forEach items="${book.authors}" var="author">
+                                   ${author}
+                                </c:forEach>
+                            </td>
+                            <td>${book.title}</td>
+                            <td>
+                                <a href="<c:url value="/books/${book.id}/fullInfo"/>">Подробнее</a>
+                            </td>
+                        </tr>
                     </c:forEach>
-                </td>
-                <td>
-                    <c:if test="${currentPage lt totalPages}">
-                        <a href="<c:url value="?page=${currentPage + 1}"/>">Следующая</a>
-                    </c:if>
-                </td>
-            </tr>
-        </table>
-</body>
+                </table>
+            </div>
+            <br>
+            <br>
+            <br>
+            <hr>
+            <div class="table-pagination">
+                <table>
+                    <tr>
+                        Total rows: ${totalElements}
+                    </tr>
+                    <tr>
+                        <td>
+                            <c:if test="${currentPage != 1}">
+                                <a href="<c:url value="?page=${currentPage - 1}"/>">Предыдущая</a>
+                            </c:if>
+                        </td>
+                        <td>
+                            <c:forEach begin="${currentPage}" end="${totalPages}" var="p">
+                                <c:choose>
+                                    <c:when test="${currentPage eq p}">
+                                        ${p}
+                                    </c:when>
+                                    <c:otherwise>
+                                        <a href="<c:url value="?page=${p}"/>">${p}</a>
+                                    </c:otherwise>
+                                </c:choose>
+                            </c:forEach>
+                        </td>
+                        <td>
+                            <c:if test="${currentPage lt totalPages}">
+                                <a href="<c:url value="?page=${currentPage + 1}"/>">Следующая</a>
+                            </c:if>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="button">
+                <a href="<c:url value="/"/>"><button type="button">На главную</button></a>
+            </div>
+        </div>
+    </body>
 </html>

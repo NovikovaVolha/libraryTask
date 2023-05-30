@@ -1,6 +1,7 @@
 package com.academy.libray_task.controller;
 
 import com.academy.libray_task.dto.BookDto;
+import com.academy.libray_task.dto.BookToSave;
 import com.academy.libray_task.service.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -42,6 +43,8 @@ public class BookController {
     @GetMapping("/{id}/fullInfo")
     public String showFullInfo(@PathVariable Integer id, Model model) {
         model.addAttribute("book", bookService.findById(id));
+//        model.addAttribute("authors", bookService.findById(id).getAuthors());
+//        model.addAttribute("categories", bookService.findById(id).getCategories());
         return "book/fullInfo";
     }
 
@@ -59,7 +62,7 @@ public class BookController {
 
     @GetMapping("/addForm")
     public String getAddForm(Model model) {
-        model.addAttribute("book", new BookDto());
+        model.addAttribute("book", new BookToSave());
         model.addAttribute("authors", authorService.findAll());
         model.addAttribute("categories", categoryService.findAll());
         model.addAttribute("catalogues", catalogueService.findAll());
@@ -68,18 +71,18 @@ public class BookController {
     }
 
     @PostMapping("/save")
-    public String saveBook(@ModelAttribute BookDto book) {
+    public String saveBook(@ModelAttribute BookToSave book) {
         bookService.save(book);
         return "redirect:/books/all/page";
     }
 
     @GetMapping("/{id}/updateForm")
     public String getUpdateForm(@PathVariable Integer id, Model model) {
-        model.addAttribute("book", bookService.findById(id));
+        model.addAttribute("book", bookService.findForUpdate(id));
         return "book/updateForm";
     }
 
-    @PostMapping("/{id}/delete")
+    @GetMapping("/{id}/delete")
     public String deleteBook(@PathVariable Integer id) {
         bookService.delete(id);
         return "redirect:/books/all/page";

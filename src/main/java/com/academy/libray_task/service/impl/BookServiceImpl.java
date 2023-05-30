@@ -1,8 +1,10 @@
 package com.academy.libray_task.service.impl;
 
+import com.academy.libray_task.converter.*;
 import com.academy.libray_task.dto.*;
 import com.academy.libray_task.mapper.*;
 import com.academy.libray_task.model.entity.*;
+import com.academy.libray_task.model.entity.Author;
 import com.academy.libray_task.model.repository.*;
 import com.academy.libray_task.service.BookService;
 import lombok.RequiredArgsConstructor;
@@ -24,10 +26,29 @@ public class BookServiceImpl implements BookService {
     private final CategoryRepository categoryRepository;
     private final CatalogueRepository catalogueRepository;
     private final PublisherRepository publisherRepository;
+    private final StringToAuthorConverter authorConverter;
+    private final StringToCategoryConverter categoryConverter;
+    private final StringToCatalogueConverter catalogueConverter;
+    private final StringToPublisherConverter publisherConverter;
+    private final BookToBookToSaveConverter bookConverter;
 
     @Override
-    public void save(BookDto book) {
-        bookRepository.save(bookMapper.toEntity(book));
+    public void save(BookToSave bookToSave) {
+        Book book = new Book();
+
+        book.setISBN(bookToSave.getISBN());
+        book.setTitle(bookToSave.getTitle());
+        book.setCatalogue(catalogueConverter.convert(bookToSave.getCatalogue()));
+        book.setPublisher(publisherConverter.convert(bookToSave.getPublisher()));
+        book.setYearOfIssue(Integer.valueOf(bookToSave.getYearOfIssue()));
+        book.setBookAmount(Integer.valueOf(bookToSave.getBookAmount()));
+        bookRepository.save(book);
+
+        //book = bookRepository.getReferenceById(book.getId());
+        book.setAuthors(authorConverter.convert(bookToSave.getAuthors()));
+        book.setCategories(categoryConverter.convert(bookToSave.getCategories()));
+        //bookRepository.flush();
+        //bookRepository.save(book);
     }
 
     @Override
@@ -48,6 +69,12 @@ public class BookServiceImpl implements BookService {
     }
 
     @Override
+    public BookToSave findForUpdate(Integer id) {
+        bookRepository.getReferenceById(id);
+        return null;
+    }
+
+    @Override
     public List<BookDto> findByISBN(String ISBN) {
         return bookMapper.toDtoList(bookRepository.findBookByISBN(ISBN));
     }
@@ -58,9 +85,10 @@ public class BookServiceImpl implements BookService {
     }
 
     @Override
-    public List<BookDto> findByAuthor(String authorName) {
-        List<Author> authors = authorRepository.findAuthorByNameContainingIgnoreCase(authorName);
-        return bookMapper.toDtoList(bookRepository.findBooksByAuthorsIn(authors));
+    public List<BookDto> findByAuthor(String author) {
+        //Author authors = authorRepository.findAuthorByNameAndSurname(author);
+        //bookMapper.toDto(bookRepository.findBooksByAuthorsIn(authors))
+        return  null;
     }
 
     @Override

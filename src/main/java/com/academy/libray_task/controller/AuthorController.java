@@ -1,7 +1,6 @@
 package com.academy.libray_task.controller;
 
 import com.academy.libray_task.dto.AuthorDto;
-import com.academy.libray_task.dto.CatalogueDto;
 import com.academy.libray_task.service.AuthorService;
 import com.academy.libray_task.service.SearchUtilService;
 import lombok.RequiredArgsConstructor;
@@ -72,7 +71,7 @@ public class AuthorController {
         return "author/updateForm";
     }
 
-    @PostMapping("/{id}/delete")
+    @GetMapping("/{id}/delete")
     public String deleteAuthor(@PathVariable Integer id) {
         authorService.delete(id);
         return "redirect:/authors/all/page";

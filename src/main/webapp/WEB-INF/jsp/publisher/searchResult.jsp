@@ -6,31 +6,38 @@
         <title>Издательство: результат поиска</title>
     </head>
     <body>
-        <h1>Результат поиска</h1>
-        <hr>
-        <table id="searchResult">
-            <tr>
-                <th>№</th>
-                <th>Название</th>
-                <th>Страна</th>
-                <th>Действия</th>
-            </tr>
-                <c:forEach var="publisher" items="${publishers}">
+        <div class="container">
+            <h1>Результат поиска</h1>
+            <hr>
+            <div class="table">
+                <table>
                     <tr>
-                        <td>${publisher.id}</td>
-                        <td>${publisher.name}</td>
-                        <td>${publisher.country}</td>
-                        <td>
-                            <a href="<c:url value="${publisher.id}/updateForm"/>"><button type="button">Редактировать</button></a>
-                            <form method="post" action="<c:url value="${publisher.id}/delete"/>" style="display:inline;">
-                                <input type="hidden" name="id" value="${publisher.id}">
-                                <input type="submit" value="Удалить">
-                            </form>
-                        </td>
+                        <th>№</th>
+                        <th>Название</th>
+                        <th>Страна</th>
+                        <th>Действия</th>
                     </tr>
-                </c:forEach>
-        </table>
-        <hr>
-        <a href="<c:url value="/publishers/all/page"/>"><button type="button">Вернуться к списку издательств</button></a>
+                        <c:forEach var="publisher" items="${publishers}">
+                            <tr>
+                                <td>${publisher.id}</td>
+                                <td>${publisher.name}</td>
+                                <td>${publisher.country}</td>
+                                <td>
+                                    <div class="button">
+                                        <a href="<c:url value="${publisher.id}/updateForm"/>"><button type="button">Редактировать</button></a>
+                                    </div>
+                                    <div class="button">
+                                        <a href="<c:url value="${publisher.id}/delete"/>"><button type="button">Удалить</button></a>
+                                    </div>
+                                </td>
+                            </tr>
+                        </c:forEach>
+                </table>
+            </div>
+            <hr>
+            <div class="button">
+                <a href="<c:url value="/publishers/all/page"/>"><button type="button">Вернуться к списку издательств</button></a>
+            </div>
+        </div>
     </body>
 </html>

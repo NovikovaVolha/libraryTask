@@ -6,9 +6,11 @@
         <title>Книга: результат поиска</title>
     </head>
     <body>
+    <div class="container">
         <h1>Результат поиска</h1>
         <hr>
-        <table id="searchResult">
+        <div class="table">
+        <table>
             <tr>
                 <th>№</th>
                 <th>ISBN</th>
@@ -45,16 +47,21 @@
                     <td>${book.createdAt}</td>
                     <td>${book.updatedAt}</td>
                     <td>
-                        <a href="<c:url value="${book.id}/updateForm"/>"><button type="button">Редактировать</button></a>
-                        <form method="post" action="<c:url value="${book.id}/delete"/>" style="display:inline;">
-                            <input type="hidden" name="id" value="${book.id}">
-                            <input type="submit" value="Удалить">
-                        </form>
+                        <div class="button">
+                            <a href="<c:url value="${book.id}/updateForm"/>"><button type="button">Редактировать</button></a>
+                        </div>
+                        <div class="button">
+                            <a href="<c:url value="${book.id}/delete"/>"><button type="button">Удалить</button></a>
+                        </div>
                     </td>
                 </tr>
             </c:forEach>
         </table>
+        </div>
         <hr>
-        <a href="<c:url value="/books/all/page"/>"><button type="button">Вернуться к списку книг</button></a>
+        <div class="button">
+            <a href="<c:url value="/books/all/page"/>"><button type="button">Вернуться к списку книг</button></a>
+        </div>
+    </div>
     </body>
 </html>

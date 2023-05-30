@@ -81,7 +81,7 @@ public class RequestController {
         return "request/updateForm";
     }
 
-    @PostMapping("/{id}/delete")
+    @GetMapping("/{id}/delete")
     public String deleteRequest(@PathVariable Integer id) {
         requestService.delete(id);
         return "redirect:/requests/all/page";

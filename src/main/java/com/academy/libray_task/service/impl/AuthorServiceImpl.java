@@ -2,7 +2,6 @@ package com.academy.libray_task.service.impl;
 
 import com.academy.libray_task.dto.AuthorDto;
 import com.academy.libray_task.mapper.AuthorMapper;
-import com.academy.libray_task.model.entity.Author;
 import com.academy.libray_task.model.repository.AuthorRepository;
 import com.academy.libray_task.service.AuthorService;
 import lombok.RequiredArgsConstructor;
@@ -34,7 +33,7 @@ public class AuthorServiceImpl implements AuthorService {
     @Override
     public Page<AuthorDto> findAllPaginated(Integer pageNumber, Integer pageSize) {
         Pageable pageable = PageRequest.of(pageNumber - 1, pageSize, Sort.Direction.ASC, "id");
-        Page<Author> authors = authorRepository.findAll(pageable);
+        Page<com.academy.libray_task.model.entity.Author> authors = authorRepository.findAll(pageable);
         return authors.map(authorMapper::toDto);
     }
 

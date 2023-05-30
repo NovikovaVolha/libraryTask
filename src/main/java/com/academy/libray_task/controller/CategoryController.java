@@ -69,7 +69,7 @@ public class CategoryController {
         return "category/updateForm";
     }
 
-    @PostMapping("/{id}/delete")
+    @GetMapping("/{id}/delete")
     public String deleteCategory(@PathVariable Integer id) {
         categoryService.delete(id);
         return "redirect:/categories/all/page";

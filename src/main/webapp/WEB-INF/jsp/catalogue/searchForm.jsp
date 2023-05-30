@@ -7,30 +7,38 @@
         <title>Поиск каталога</title>
     </head>
     <body>
-        <h1>Поиск</h1>
-        <hr>
-            <form id="searchForm" action="/catalogues/findByName" method="get">
-                <table>
-                    <tr>
-                        <td>
-                            <select name="paramName">
-                                <option name="name" selected>Название</option>
-                            </select>
-                        </td>
-                        <td>
-                            <input form="searchForm" name="name" type="text">
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <input type="reset" value="Сброс">
-                            <input type="submit" value="Поиск">
-                        </td>
-                    </tr>
-                </table>
-            </form>
-        <hr>
-        <a href="<c:url value="/catalogues/all/page"/>"><button type="button">Вернуться к списку каталогов</button></a>
+        <div class="container">
+            <h1>Поиск</h1>
+            <hr>
+                <form id="searchForm" action="/catalogues/findByName" method="get">
+                    <div class="table-search">
+                        <table>
+                            <tr>
+                                <td>
+                                    <select name="paramName">
+                                        <option name="name" selected>Название</option>
+                                    </select>
+                                </td>
+                                <td>
+                                    <input form="searchForm" name="name" type="text">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="button">
+                                        <input type="reset" value="Сброс">
+                                        <input type="submit" value="Поиск">
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </form>
+            <hr>
+            <div class="button">
+                <a href="<c:url value="/catalogues/all/page"/>"><button type="button">К списку каталогов</button></a>
+            </div>
+        </div>
     </body>
 </html>
 

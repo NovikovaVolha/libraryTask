@@ -71,7 +71,7 @@ public class PublisherController {
         return "publisher/updateForm";
     }
 
-    @PostMapping("/{id}/delete")
+    @GetMapping("/{id}/delete")
     public String deleteCategory(@PathVariable Integer id) {
         publisherService.delete(id);
         return "redirect:/publishers/all/page";
