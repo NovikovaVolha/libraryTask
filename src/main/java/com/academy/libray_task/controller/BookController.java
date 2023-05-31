@@ -43,8 +43,6 @@ public class BookController {
     @GetMapping("/{id}/fullInfo")
     public String showFullInfo(@PathVariable Integer id, Model model) {
         model.addAttribute("book", bookService.findById(id));
-//        model.addAttribute("authors", bookService.findById(id).getAuthors());
-//        model.addAttribute("categories", bookService.findById(id).getCategories());
         return "book/fullInfo";
     }
 

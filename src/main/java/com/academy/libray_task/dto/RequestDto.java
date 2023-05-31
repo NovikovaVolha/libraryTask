@@ -27,4 +27,9 @@ public class RequestDto {
     private LocalDate createdAt;
     private LocalDate updatedAt;
 
+    @Override
+    public String toString() {
+        return reader + " " + requestStatus;
+    }
+
 }

@@ -11,7 +11,7 @@
         <h1>Результат поиска</h1>
         <hr>
         <div class="table">
-        <table>
+        <table align="center">
             <tr>
                 <th>№</th>
                 <th>Имя</th>

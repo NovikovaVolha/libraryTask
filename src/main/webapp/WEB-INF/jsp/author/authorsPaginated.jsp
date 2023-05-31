@@ -13,7 +13,8 @@
             <div class="button">
                 <a href="<c:url value="/authors/addForm"/>"><button type="button">Создать</button></a>
             </div>
-            <hr>
+            <br>
+            <br>
             <div class="button">
                 <a href="<c:url value="/authors/searchForm"/>"><button type="button">Поиск</button></a>
             </div>
@@ -38,9 +39,6 @@
                     </c:forEach>
                 </table>
             </div>
-            <br>
-            <br>
-            <br>
             <hr>
             <div class="table-pagination">
                 <table>
@@ -73,8 +71,9 @@
                     </tr>
                 </table>
             </div>
+            <hr>
             <div class="button">
-                <a href="<c:url value="/"/>"><button type="button">На главную</button></a>
+                <a href="<c:url value="/main"/>"><button type="button">На главную</button></a>
             </div>
         </div>
     </body>

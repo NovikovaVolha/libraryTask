@@ -5,6 +5,7 @@
 <html>
     <head>
         <title>Редактировать пользователя</title>
+        <link rel="stylesheet" href="/css/styles.css" type="text/css"/>
     </head>
     <body>
         <div class="container">
@@ -12,7 +13,7 @@
             <hr>
                 <sf:form id="updateForm" method="post" action="/users/save" modelAttribute="user">
             <div class="table-update">
-                <table>
+                <table align="center">
                     <tr>
                         <sf:hidden path="id"/>
                     </tr>
@@ -21,7 +22,7 @@
                             <sf:label path="name">Имя</sf:label>
                         </td>
                         <td>
-                            <sf:input path="name"/>
+                            <sf:input path="name" size="50"/>
                         </td>
                     </tr>
                     <tr>
@@ -29,7 +30,7 @@
                             <sf:label path="surname">Фамилия</sf:label>
                         </td>
                         <td>
-                            <sf:input path="surname"/>
+                            <sf:input path="surname" size="50"/>
                         </td>
                     </tr>
                     <tr>
@@ -37,7 +38,7 @@
                             <sf:label path="passport">№ паспорта</sf:label>
                         </td>
                         <td>
-                            <sf:input path="passport"/>
+                            <sf:input path="passport" size="50"/>
                         </td>
                     </tr>
                     <tr>
@@ -45,7 +46,7 @@
                             <sf:label path="phoneNumber">№ телефона</sf:label>
                         </td>
                         <td>
-                            <sf:input path="phoneNumber"/>
+                            <sf:input path="phoneNumber" size="50"/>
                         </td>
                     </tr>
                     <tr>
@@ -53,7 +54,7 @@
                             <sf:label path="roles">Читатель/библиотекарь</sf:label>
                         </td>
                         <td>
-                            <sf:input path="roles"/>
+                            <sf:input path="roles" size="50"/>
                         </td>
                     </tr>
                     <tr>

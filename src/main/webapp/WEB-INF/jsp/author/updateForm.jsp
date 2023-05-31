@@ -13,7 +13,7 @@
             <hr>
                 <sf:form id="updateForm" method="post" action="/authors/save" modelAttribute="author">
             <div class="table-update">
-                <table>
+                <table align="center">
                     <tr>
                         <sf:hidden path="id"/>
                     </tr>
@@ -22,7 +22,7 @@
                             <sf:label path="name">Имя:</sf:label>
                         </td>
                         <td>
-                            <sf:input path="name"/>
+                            <sf:input path="name" size="50"/>
                         </td>
                     </tr>
                     <tr>
@@ -30,7 +30,7 @@
                             <sf:label path="surname">Фамилия:</sf:label>
                         </td>
                         <td>
-                            <sf:input path="surname"/>
+                            <sf:input path="surname" size="50"/>
                         </td>
                     </tr>
                     <tr>

@@ -1,4 +1,4 @@
-package com.academy.libray_task.converter;
+package com.academy.libray_task.converter.book;
 
 import com.academy.libray_task.model.entity.Publisher;
 import com.academy.libray_task.model.repository.PublisherRepository;
@@ -14,9 +14,9 @@ public class StringToPublisherConverter implements Converter<String, Publisher> 
 
     @Override
     public Publisher convert(String source) {
-        String[] parts = source.split(" ");
+        String[] parts = source.split(", ");
 
-        return publisherRepository.findPublishersByNameContainingIgnoreCase(parts[0]).get(0);
+        return publisherRepository.findPublisherByName(parts[0]);
     }
 
 }

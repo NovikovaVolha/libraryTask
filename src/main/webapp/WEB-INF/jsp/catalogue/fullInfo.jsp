@@ -4,13 +4,14 @@
 <html>
     <head>
         <title>Каталог</title>
+        <link rel="stylesheet" href="/css/styles.css" type="text/css"/>
     </head>
     <body>
         <div class="container">
             <h1>Каталог: информация</h1>
             <hr>
             <div class="table">
-                <table>
+                <table align="center">
                     <tr>
                         <th>№</th>
                         <th>Название</th>

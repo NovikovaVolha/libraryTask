@@ -13,7 +13,7 @@
             <hr>
                 <sf:form method="post" action="/authors/save" modelAttribute="author">
                     <div class="table">
-                        <table>
+                        <table align="center">
                             <tr>
                                 <sf:hidden path="id"/>
                             </tr>

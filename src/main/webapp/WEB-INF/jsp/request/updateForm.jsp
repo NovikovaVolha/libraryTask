@@ -5,6 +5,7 @@
 <html>
     <head>
         <title>Редактировать заявку</title>
+        <link rel="stylesheet" href="/css/styles.css" type="text/css"/>
     </head>
     <body>
         <div class="container">
@@ -12,7 +13,7 @@
             <hr>
                 <sf:form id="updateForm" method="post" action="/requests/save" modelAttribute="request">
             <div class="table-update">
-                <table>
+                <table align="center">
                     <tr>
                         <sf:hidden path="id"/>
                     </tr>
@@ -21,7 +22,7 @@
                             <sf:label path="librarian">Библиотекарь</sf:label>
                         </td>
                         <td>
-                            <sf:input path="librarian"/>
+                            <sf:input path="librarian" size="50"/>
                         </td>
                     </tr>
                     <tr>
@@ -29,7 +30,7 @@
                             <sf:label path="reader">Читатель</sf:label>
                         </td>
                         <td>
-                            <sf:input path="reader"/>
+                            <sf:input path="reader" size="50"/>
                         </td>
                     </tr>
                     <tr>
@@ -37,7 +38,7 @@
                             <sf:label path="book">Книга</sf:label>
                         </td>
                         <td>
-                            <sf:input path="book"/>
+                            <sf:input path="book" size="50"/>
                         </td>
                     </tr>
                     <tr>
@@ -45,7 +46,7 @@
                             <sf:label path="dateOfIssue">Дата выдачи</sf:label>
                         </td>
                         <td>
-                            <sf:input path="dateOfIssue"/>
+                            <sf:input path="dateOfIssue" size="50"/>
                         </td>
                     </tr>
                     <tr>
@@ -53,7 +54,7 @@
                             <sf:label path="dateOfReturn">Дата возврата</sf:label>
                         </td>
                         <td>
-                            <sf:input path="dateOfReturn"/>
+                            <sf:input path="dateOfReturn" size="50"/>
                         </td>
                     </tr>
                     <tr>

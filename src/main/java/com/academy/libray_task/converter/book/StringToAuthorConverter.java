@@ -1,4 +1,4 @@
-package com.academy.libray_task.converter;
+package com.academy.libray_task.converter.book;
 
 import com.academy.libray_task.model.entity.Author;
 import com.academy.libray_task.model.repository.AuthorRepository;
@@ -7,7 +7,6 @@ import org.springframework.core.convert.converter.Converter;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 @Component

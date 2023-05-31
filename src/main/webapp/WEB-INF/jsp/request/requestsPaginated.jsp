@@ -4,6 +4,7 @@
 <html>
     <head>
         <title>Заявки</title>
+        <link rel="stylesheet" href="/css/styles.css" type="text/css"/>
     </head>
     <body>
         <div class="container">
@@ -12,7 +13,8 @@
             <div class="button">
                 <a href="<c:url value="/requests/addForm"/>"><button type="button">Создать</button></a>
             </div>
-            <hr>
+            <br>
+            <br>
             <div class="button">
                 <a href="<c:url value="/requests/searchForm"/>"><button type="button">Поиск</button></a>
             </div>
@@ -37,9 +39,6 @@
                     </c:forEach>
                 </table>
             </div>
-            <br>
-            <br>
-            <br>
             <hr>
             <div class="table-pagination">
                 <table>
@@ -72,8 +71,9 @@
                     </tr>
                 </table>
             </div>
+            <hr>
             <div class="button">
-                <a href="<c:url value="/"/>"><button type="button">На главную</button></a>
+                <a href="<c:url value="/main"/>"><button type="button">На главную</button></a>
             </div>
         </div>
     </body>

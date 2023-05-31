@@ -5,6 +5,7 @@
 <html>
     <head>
         <title>Добавить заявку</title>
+        <link rel="stylesheet" href="/css/styles.css" type="text/css"/>
     </head>
     <body>
         <div class="container">
@@ -12,7 +13,7 @@
             <hr>
                 <sf:form method="post" action="/requests/save" modelAttribute="request">
                 <div class="table">
-                    <table>
+                    <table align="center">
                         <tr>
                             <sf:hidden path="id"/>
                         </tr>
@@ -57,7 +58,7 @@
                                 <sf:label path="dateOfIssue">Дата выдачи</sf:label>
                             </td>
                             <td>
-                                <sf:input path="dateOfIssue" title="Формат ввода: yyyy-MM-dd"/>
+                                <sf:input path="dateOfIssue" title="Формат ввода: yyyy-MM-dd" placeholder="yyyy-MM-dd"/>
                             </td>
                         </tr>
                         <tr>
@@ -65,7 +66,7 @@
                                 <sf:label path="dateOfReturn">Дата возврата</sf:label>
                             </td>
                             <td>
-                                <sf:input path="dateOfReturn" title="Формат ввода: yyyy-MM-dd"/>
+                                <sf:input path="dateOfReturn" title="Формат ввода: yyyy-MM-dd" placeholder="yyyy-MM-dd"/>
                             </td>
                         </tr>
                         <tr>

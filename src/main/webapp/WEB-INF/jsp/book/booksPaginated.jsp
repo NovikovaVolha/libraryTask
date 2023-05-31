@@ -4,6 +4,7 @@
 <html>
     <head>
         <title>Книги</title>
+        <link rel="stylesheet" href="/css/styles.css" type="text/css"/>
     </head>
     <body>
         <div class="container">
@@ -12,12 +13,14 @@
             <div class="button">
                 <a href="<c:url value="/books/addForm"/>"><button type="button">Создать</button></a>
             </div>
-            <hr>
+            <br>
+            <br>
             <div class="button">
                 <a href="<c:url value="/books/searchForm"/>"><button type="button">Поиск</button></a>
             </div>
+            <hr>
             <div class="table">
-                <table id="allBooks">
+                <table>
                     <tr>
                         <th>№</th>
                         <th>Автор</th>
@@ -40,9 +43,6 @@
                     </c:forEach>
                 </table>
             </div>
-            <br>
-            <br>
-            <br>
             <hr>
             <div class="table-pagination">
                 <table>
@@ -75,8 +75,9 @@
                     </tr>
                 </table>
             </div>
+            <hr>
             <div class="button">
-                <a href="<c:url value="/"/>"><button type="button">На главную</button></a>
+                <a href="<c:url value="/main"/>"><button type="button">На главную</button></a>
             </div>
         </div>
     </body>

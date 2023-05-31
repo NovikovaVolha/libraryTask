@@ -15,6 +15,7 @@ public interface BookService {
     Page<BookDto> findAllPaginated(Integer pageNumber, Integer pageSize);
 
     BookDto findById(Integer id);
+
     BookToSave findForUpdate(Integer id);
 
     List<BookDto> findByISBN(String ISBN);

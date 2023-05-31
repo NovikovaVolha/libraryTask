@@ -1,4 +1,4 @@
-package com.academy.libray_task.converter;
+package com.academy.libray_task.converter.book;
 
 import com.academy.libray_task.dto.BookToSave;
 import com.academy.libray_task.model.entity.Author;
@@ -9,6 +9,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class BookToBookToSaveConverter implements Converter<Book, BookToSave> {
+
     @Override
     public BookToSave convert(Book book) {
         BookToSave bookToSave = new BookToSave();
@@ -16,11 +17,13 @@ public class BookToBookToSaveConverter implements Converter<Book, BookToSave> {
         StringBuilder authors = new StringBuilder();
         for (Author author : book.getAuthors()) {
             authors.append(author.toString());
+            authors.append(",");
         }
 
         StringBuilder categories = new StringBuilder();
         for (Category category : book.getCategories()) {
             categories.append(category.toString());
+            categories.append(",");
         }
 
         bookToSave.setId(book.getId());

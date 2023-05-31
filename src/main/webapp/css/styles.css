@@ -1,6 +1,6 @@
 .container {
-    max-width: 800px;
-    margin: 0 auto;
+    max-width: 75%;
+    margin: auto;
     padding: 20px;
 }
 
@@ -9,10 +9,10 @@ h1 {
 }
 
 .table{
-    border: 1px solid #eee;
-    table-layout: fixed;
+    table-layout: auto;
     width: 100%;
-    margin-bottom: 20px;
+    margin: auto;
+    align: center;
 }
 .table th {
     font-weight: bold;
@@ -23,7 +23,7 @@ h1 {
 .table td{
     padding: 5px 10px;
     border: 1px solid #eee;
-    text-align: left;
+    text-align: center;
 }
 .table tbody tr:nth-child(odd){
     background: #fff;
@@ -36,4 +36,15 @@ h1 {
     width: 100%;
     border: none;
     margin-bottom: 20px;
+}
+
+.button {
+    font-size: 10px;
+    background: white;
+    color: black;
+    cursor: pointer;
+}
+
+.button:hover {
+    color: white;
 }

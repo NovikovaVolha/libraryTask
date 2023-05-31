@@ -5,6 +5,7 @@
 <html>
     <head>
         <title>Добавить новое издательство</title>
+        <link rel="stylesheet" href="/css/styles.css" type="text/css"/>
     </head>
     <body>
         <div class="container">
@@ -12,7 +13,7 @@
             <hr>
                 <sf:form method="post" action="/publishers/save" modelAttribute="publisher">
                     <div class="table">
-                        <table>
+                        <table align="center">
                             <tr>
                                 <sf:hidden path="id"/>
                             </tr>

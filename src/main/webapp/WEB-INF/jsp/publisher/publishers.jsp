@@ -4,6 +4,7 @@
 <html>
     <head>
         <title>Издательства</title>
+        <link rel="stylesheet" href="/css/styles.css" type="text/css"/>
     </head>
     <body>
         <div class="container">
@@ -12,7 +13,8 @@
             <div class="button">
                 <a href="<c:url value="/publishers/addForm"/>"><button type="button">Создать</button></a>
             </div>
-            <hr>
+            <br>
+            <br>
             <div class="button">
                 <a href="<c:url value="/publishers/searchForm"/>"><button type="button">Поиск</button></a>
             </div>

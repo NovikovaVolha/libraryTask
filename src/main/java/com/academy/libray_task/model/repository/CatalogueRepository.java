@@ -9,4 +9,6 @@ public interface CatalogueRepository extends JpaRepository<Catalogue, Integer> {
 
     List<Catalogue> findCataloguesByNameContainingIgnoreCase(String name);
 
+    Catalogue findCatalogueByName(String name);
+
 }

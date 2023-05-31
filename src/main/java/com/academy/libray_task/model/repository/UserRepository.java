@@ -12,7 +12,7 @@ public interface UserRepository extends JpaRepository<User, Integer> {
 
     List<User> findUsersBySurnameContainingIgnoreCase(String surname);
 
-    List<User> findUsersByNameOrSurnameContainingIgnoreCase(String name, String surname);
+    User findUserByNameAndSurname(String name, String surname);
 
     List<User> findUserByPassport(String passport);
 
@@ -20,6 +20,6 @@ public interface UserRepository extends JpaRepository<User, Integer> {
 
     List<User> findUsersByRolesIn(List<Role> roles);
 
-    User findByUsername(String userName);
+    User findByUsername(String username);
 
 }

@@ -1,6 +1,7 @@
 package com.academy.libray_task.service.impl;
 
-import com.academy.libray_task.converter.*;
+import com.academy.libray_task.converter.book.BookToBookToSaveConverter;
+import com.academy.libray_task.converter.book.BookToSaveToBookConverter;
 import com.academy.libray_task.dto.*;
 import com.academy.libray_task.mapper.*;
 import com.academy.libray_task.model.entity.*;
@@ -26,29 +27,14 @@ public class BookServiceImpl implements BookService {
     private final CategoryRepository categoryRepository;
     private final CatalogueRepository catalogueRepository;
     private final PublisherRepository publisherRepository;
-    private final StringToAuthorConverter authorConverter;
-    private final StringToCategoryConverter categoryConverter;
-    private final StringToCatalogueConverter catalogueConverter;
-    private final StringToPublisherConverter publisherConverter;
-    private final BookToBookToSaveConverter bookConverter;
+    private final BookToSaveToBookConverter toBookConverter;
+    private final BookToBookToSaveConverter toBookToSaveConverter;
 
     @Override
     public void save(BookToSave bookToSave) {
-        Book book = new Book();
-
-        book.setISBN(bookToSave.getISBN());
-        book.setTitle(bookToSave.getTitle());
-        book.setCatalogue(catalogueConverter.convert(bookToSave.getCatalogue()));
-        book.setPublisher(publisherConverter.convert(bookToSave.getPublisher()));
-        book.setYearOfIssue(Integer.valueOf(bookToSave.getYearOfIssue()));
-        book.setBookAmount(Integer.valueOf(bookToSave.getBookAmount()));
+        Book book = toBookConverter.convert(bookToSave);
+        assert book != null;
         bookRepository.save(book);
-
-        //book = bookRepository.getReferenceById(book.getId());
-        book.setAuthors(authorConverter.convert(bookToSave.getAuthors()));
-        book.setCategories(categoryConverter.convert(bookToSave.getCategories()));
-        //bookRepository.flush();
-        //bookRepository.save(book);
     }
 
     @Override
@@ -70,8 +56,8 @@ public class BookServiceImpl implements BookService {
 
     @Override
     public BookToSave findForUpdate(Integer id) {
-        bookRepository.getReferenceById(id);
-        return null;
+        Book book = bookRepository.getReferenceById(id);
+        return toBookToSaveConverter.convert(book);
     }
 
     @Override
@@ -86,9 +72,8 @@ public class BookServiceImpl implements BookService {
 
     @Override
     public List<BookDto> findByAuthor(String author) {
-        //Author authors = authorRepository.findAuthorByNameAndSurname(author);
-        //bookMapper.toDto(bookRepository.findBooksByAuthorsIn(authors))
-        return  null;
+        List<Author> authors = authorRepository.findAuthorBySurnameContainingIgnoreCase(author);
+        return bookMapper.toDtoList(bookRepository.findBooksByAuthorsIn(authors));
     }
 
     @Override

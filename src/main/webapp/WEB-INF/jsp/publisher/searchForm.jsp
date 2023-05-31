@@ -5,6 +5,7 @@
 <html>
     <head>
         <title>Поиск издательства</title>
+        <link rel="stylesheet" href="/css/styles.css" type="text/css"/>
     </head>
     <body>
         <div class="container">
@@ -12,7 +13,7 @@
             <hr>
             <form id="searchForm" action="/publishers/findBy" method="get">
                 <div class="table-search">
-                    <table>
+                    <table align="center">
                         <tr>
                             <td>
                                 <select name="paramName">

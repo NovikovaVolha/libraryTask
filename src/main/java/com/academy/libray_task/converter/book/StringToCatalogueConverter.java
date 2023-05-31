@@ -1,4 +1,4 @@
-package com.academy.libray_task.converter;
+package com.academy.libray_task.converter.book;
 
 import com.academy.libray_task.model.entity.Catalogue;
 import com.academy.libray_task.model.repository.CatalogueRepository;
@@ -14,8 +14,12 @@ public class StringToCatalogueConverter implements Converter<String, Catalogue> 
 
     @Override
     public Catalogue convert(String source) {
+//        Catalogue found = catalogueRepository.findCatalogueByName(source);
+//        Catalogue catalogue = new Catalogue();
+//        catalogue.setId(found.getId());
+//        catalogue.setName(found.getName());
 
-        return catalogueRepository.findCataloguesByNameContainingIgnoreCase(source).get(0);
+        return catalogueRepository.findCatalogueByName(source);
     }
 
 }

@@ -27,4 +27,8 @@ public interface UserService {
 
     void delete(Integer id);
 
+    void registerNewUser(UserDto userDto);
+
+    UserDto findByUsername(String username);
+
 }

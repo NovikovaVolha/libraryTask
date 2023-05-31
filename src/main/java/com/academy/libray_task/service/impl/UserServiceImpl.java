@@ -2,6 +2,7 @@ package com.academy.libray_task.service.impl;
 
 import com.academy.libray_task.dto.UserDto;
 import com.academy.libray_task.mapper.UserMapper;
+import com.academy.libray_task.mapper.enums.RoleMapper;
 import com.academy.libray_task.model.entity.Request;
 import com.academy.libray_task.model.entity.User;
 import com.academy.libray_task.model.entity.enums.RequestType;
@@ -13,7 +14,9 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Collections;
 import java.util.List;
@@ -24,7 +27,10 @@ public class UserServiceImpl implements UserService {
 
     private final UserRepository userRepository;
     private final UserMapper userMapper;
+    private final RoleMapper roleMapper;
+    private final BCryptPasswordEncoder passwordEncoder;
 
+    @Transactional
     @Override
     public void save(UserDto user) {
         userRepository.save(userMapper.toEntity(user));
@@ -77,9 +83,31 @@ public class UserServiceImpl implements UserService {
         return userMapper.toDtoList(users);
     }
 
+    @Transactional
     @Override
     public void delete(Integer id) {
         userRepository.deleteById(id);
     }
 
+    @Override
+    public void registerNewUser(UserDto userDto) {
+        User user = new User();
+        user.setName(userDto.getName());
+        user.setSurname(userDto.getSurname());
+        user.setPassport(userDto.getPassport());
+        user.setPhoneNumber(userDto.getPhoneNumber());
+        user.setRoles(roleMapper.toEntityList(userDto.getRoles()));
+        user.setUsername(userDto.getUsername());
+        user.setPassword(passwordEncoder.encode(userDto.getPassword()));
+        user.setAccountNonExpired(true);
+        user.setAccountNonLocked(true);
+        user.setCredentialsNonExpired(true);
+        user.setEnabled(true);
+        userRepository.save(user);
+    }
+
+    @Override
+    public UserDto findByUsername(String username) {
+        return userMapper.toDto(userRepository.findByUsername(username));
+    }
 }

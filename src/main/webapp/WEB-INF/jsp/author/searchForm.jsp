@@ -13,7 +13,7 @@
             <hr>
             <form id="searchForm" action="/authors/findBy" method="get">
                 <div class="table-search">
-                    <table>
+                    <table align="center">
                         <tr>
                             <td>
                                 <select name="paramName">

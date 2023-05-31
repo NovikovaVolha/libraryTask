@@ -11,4 +11,6 @@ public interface PublisherRepository extends JpaRepository<Publisher, Integer> {
 
     List<Publisher> findPublishersByCountryContainingIgnoreCase(String country);
 
+    Publisher findPublisherByName(String name);
+
 }

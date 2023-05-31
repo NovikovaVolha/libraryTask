@@ -5,6 +5,7 @@
 <html>
     <head>
         <title>Редактировать книгу</title>
+        <link rel="stylesheet" href="/css/styles.css" type="text/css"/>
     </head>
     <body>
         <div class="container">
@@ -12,7 +13,7 @@
             <hr>
                 <sf:form id="updateForm" method="post" action="/books/save" modelAttribute="book">
             <div class="table-update">
-                <table>
+                <table align="center">
                     <tr>
                         <sf:hidden path="id"/>
                     </tr>
@@ -21,7 +22,7 @@
                             <sf:label path="ISBN">ISBN: </sf:label>
                         </td>
                         <td>
-                            <sf:input path="ISBN"/>
+                            <sf:input type="text" path="ISBN" size="50"/>
                         </td>
                     </tr>
                     <tr>
@@ -29,7 +30,7 @@
                             <sf:label path="title">Заголовок: </sf:label>
                         </td>
                         <td>
-                            <sf:input path="title"/>
+                            <sf:input type="text" path="title" size="50"/>
                         </td>
                     </tr>
                     <tr>
@@ -37,7 +38,7 @@
                             <sf:label path="authors">Автор: </sf:label>
                         </td>
                         <td>
-                            <sf:input path="authors"/>
+                            <sf:input type="text" path="authors" size="50"/>
                         </td>
                     </tr>
                     <tr>
@@ -45,7 +46,7 @@
                             <sf:label path="categories">Категория: </sf:label>
                         </td>
                         <td>
-                            <sf:input path="categories"/>
+                            <sf:input type="text" path="categories" size="50"/>
                         </td>
                     </tr>
                     <tr>
@@ -53,7 +54,7 @@
                             <sf:label path="publisher">Издательство: </sf:label>
                         </td>
                         <td>
-                            <sf:input path="publisher"/>
+                            <sf:input type="text" path="publisher" size="50"/>
                         </td>
                     </tr>
                     <tr>
@@ -61,7 +62,7 @@
                             <sf:label path="yearOfIssue">Год выпуска: </sf:label>
                         </td>
                         <td>
-                            <sf:input path="yearOfIssue"/>
+                            <sf:input type="text" path="yearOfIssue" size="50"/>
                         </td>
                     </tr>
                     <tr>
@@ -69,7 +70,7 @@
                             <sf:label path="catalogue">Каталог: </sf:label>
                         </td>
                         <td>
-                            <sf:input path="catalogue"/>
+                            <sf:input type="text" path="catalogue" size="50"/>
                         </td>
                     </tr>
                     <tr>
@@ -77,7 +78,7 @@
                             <sf:label path="bookAmount">Количество экземпляров: </sf:label>
                         </td>
                         <td>
-                            <sf:input path="bookAmount"/>
+                            <sf:input type="text" path="bookAmount" size="50"/>
                         </td>
                     </tr>
                     <tr>

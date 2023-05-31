@@ -1,6 +1,7 @@
 package com.academy.libray_task.controller;
 
 import com.academy.libray_task.dto.RequestDto;
+import com.academy.libray_task.dto.RequestToSave;
 import com.academy.libray_task.dto.enums.RequestStatusDto;
 import com.academy.libray_task.dto.enums.RequestTypeDto;
 import com.academy.libray_task.service.*;
@@ -58,7 +59,7 @@ public class RequestController {
 
     @GetMapping("/addForm")
     public String getAddForm(Model model) {
-        model.addAttribute("request", new RequestDto());
+        model.addAttribute("request", new RequestToSave());
         model.addAttribute("books", bookService.findAll());
         model.addAttribute("readers", userService.findByRole("ЧИТАТЕЛЬ"));
         model.addAttribute("librarians", userService.findByRole("БИБЛИОТЕКАРЬ"));
@@ -68,14 +69,14 @@ public class RequestController {
     }
 
     @PostMapping("/save")
-    public String saveRequest(@ModelAttribute RequestDto request) {
+    public String saveRequest(@ModelAttribute RequestToSave request) {
         requestService.save(request);
         return "redirect:/requests/all/page";
     }
 
     @GetMapping("/{id}/updateForm")
     public String getUpdateForm(@PathVariable Integer id, Model model) {
-        model.addAttribute("request", requestService.findById(id));
+        model.addAttribute("request", requestService.findToUpdate(id));
         model.addAttribute("requestStatuses", RequestStatusDto.values());
         model.addAttribute("requestTypes", RequestTypeDto.values());
         return "request/updateForm";

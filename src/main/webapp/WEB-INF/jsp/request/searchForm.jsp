@@ -5,6 +5,7 @@
 <html>
     <head>
         <title>Поиск заявок</title>
+        <link rel="stylesheet" href="/css/styles.css" type="text/css"/>
     </head>
     <body>
         <div class="container">
@@ -12,7 +13,7 @@
             <hr>
             <form id="searchForm" action="/requests/findBy" method="get">
                 <div class="table-search">
-                    <table>
+                    <table align="center">
                         <tr>
                             <td>
                                 <select form="searchForm" name="paramName">

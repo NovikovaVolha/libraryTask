@@ -83,12 +83,10 @@ CREATE TABLE book
 
 CREATE TABLE book_author
 (
-    id         int NOT NULL AUTO_INCREMENT,
     book_id    int NOT NULL,
     author_id  int NOT NULL,
     created_at timestamp NULL DEFAULT CURRENT_TIMESTAMP,
     updated_at timestamp NULL DEFAULT CURRENT_TIMESTAMP,
-    PRIMARY KEY (id),
     CONSTRAINT author_id
         FOREIGN KEY (author_id) REFERENCES author (id),
     CONSTRAINT book_id
@@ -97,12 +95,10 @@ CREATE TABLE book_author
 
 CREATE TABLE book_category
 (
-    id          INT NOT NULL,
     book_id     INT NOT NULL,
     category_id INT NOT NULL,
     created_at  TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP,
     updated_at  TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP,
-    PRIMARY KEY (id),
     CONSTRAINT book_id_book
         FOREIGN KEY (book_id) REFERENCES book (id),
     CONSTRAINT category_id_cat

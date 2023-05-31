@@ -4,13 +4,14 @@
 <html>
     <head>
         <title>Пользователи</title>
+        <link rel="stylesheet" href="/css/styles.css" type="text/css"/>
     </head>
     <body>
         <div class="container">
             <h1>Пользователь: информация</h1>
             <hr>
             <div class="table">
-                <table>
+                <table align="center">
                     <tr>
                         <th>№</th>
                         <th>Имя</th>

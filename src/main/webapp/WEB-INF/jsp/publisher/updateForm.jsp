@@ -5,6 +5,7 @@
 <html>
     <head>
         <title>Редактировать издательство</title>
+        <link rel="stylesheet" href="/css/styles.css" type="text/css"/>
     </head>
     <body>
         <div class="container">
@@ -12,7 +13,7 @@
             <hr>
                 <sf:form id="updateForm" method="post" action="/publishers/save" modelAttribute="publisher">
             <div class="table-update">
-                <table>
+                <table align="center">
                     <tr>
                         <sf:hidden path="id"/>
                     </tr>
@@ -21,7 +22,7 @@
                             <sf:label path="name">Название: </sf:label>
                         </td>
                         <td>
-                            <sf:input path="name"/>
+                            <sf:input path="name" size="50"/>
                         </td>
                     </tr>
                     <tr>
@@ -29,7 +30,7 @@
                             <sf:label path="country">Страна: </sf:label>
                         </td>
                         <td>
-                            <sf:input path="country"/>
+                            <sf:input path="country" size="50"/>
                         </td>
                     </tr>
                     <tr>

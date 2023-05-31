@@ -5,6 +5,7 @@
 <html>
     <head>
         <title>Добавить новый каталог</title>
+        <link rel="stylesheet" href="/css/styles.css" type="text/css"/>
     </head>
     <body>
         <div class="container">
@@ -12,7 +13,7 @@
             <hr>
                 <sf:form method="post" action="/catalogues/save" modelAttribute="catalogue">
                 <div class="table">
-                    <table>
+                    <table align="center">
                         <tr>
                             <sf:hidden path="id"/>
                         </tr>

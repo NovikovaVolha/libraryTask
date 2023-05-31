@@ -4,6 +4,7 @@
 <html>
     <head>
         <title>Пользователи</title>
+        <link rel="stylesheet" href="/css/styles.css" type="text/css"/>
     </head>
     <body>
         <div class="container">
@@ -12,7 +13,8 @@
             <div class="button">
                 <a href="<c:url value="/users/addForm"/>"><button type="button">Создать</button></a>
             </div>
-            <hr>
+            <br>
+            <br>
             <div class="button">
                 <a href="<c:url value="/users/searchForm"/>"><button type="button">Поиск</button></a>
             </div>

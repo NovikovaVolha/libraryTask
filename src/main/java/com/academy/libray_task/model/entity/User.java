@@ -66,4 +66,9 @@ public class User implements UserDetails {
         return authorities;
     }
 
+    @Override
+    public String toString() {
+        return name + " " + surname;
+    }
+
 }

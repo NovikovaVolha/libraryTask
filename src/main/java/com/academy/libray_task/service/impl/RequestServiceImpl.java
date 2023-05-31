@@ -1,7 +1,10 @@
 package com.academy.libray_task.service.impl;
 
+import com.academy.libray_task.converter.request.RequestToRequestToSaveConverter;
+import com.academy.libray_task.converter.request.RequestToSaveToRequestConverter;
 import com.academy.libray_task.dto.BookDto;
 import com.academy.libray_task.dto.RequestDto;
+import com.academy.libray_task.dto.RequestToSave;
 import com.academy.libray_task.dto.UserDto;
 import com.academy.libray_task.mapper.BookMapper;
 import com.academy.libray_task.mapper.RequestMapper;
@@ -33,10 +36,20 @@ public class RequestServiceImpl implements RequestService {
     private final UserMapper userMapper;
     private final BookService bookService;
     private final BookMapper bookMapper;
+    private final RequestToRequestToSaveConverter toRequestToSaveConverter;
+    private final RequestToSaveToRequestConverter toRequestConverter;
 
     @Override
-    public void save(RequestDto request) {
-        requestRepository.save(requestMapper.toEntity(request));
+    public void save(RequestToSave requestToSave) {
+        Request request = toRequestConverter.convert(requestToSave);
+        assert request != null;
+        requestRepository.save(request);
+    }
+
+    @Override
+    public RequestToSave findToUpdate(Integer id) {
+        Request request = requestRepository.getReferenceById(id);
+        return toRequestToSaveConverter.convert(request);
     }
 
     @Override
