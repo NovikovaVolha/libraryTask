@@ -11,6 +11,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+
 @Controller
 @RequiredArgsConstructor
 @RequestMapping("/requests")
@@ -76,9 +80,11 @@ public class RequestController {
 
     @GetMapping("/{id}/updateForm")
     public String getUpdateForm(@PathVariable Integer id, Model model) {
+        List<String> requestStatuses = Stream.of(RequestStatusDto.values()).map(Enum::toString).collect(Collectors.toList());
+        List<String> requestTypes = Stream.of(RequestTypeDto.values()).map(Enum::toString).collect(Collectors.toList());
         model.addAttribute("request", requestService.findToUpdate(id));
-        model.addAttribute("requestStatuses", RequestStatusDto.values());
-        model.addAttribute("requestTypes", RequestTypeDto.values());
+        model.addAttribute("requestStatuses", requestStatuses);
+        model.addAttribute("requestTypes", requestTypes);
         return "request/updateForm";
     }
 
