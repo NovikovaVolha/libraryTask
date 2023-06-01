@@ -6,6 +6,8 @@ import com.academy.libray_task.service.SearchUtilService;
 import com.academy.libray_task.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -67,7 +69,12 @@ public class UserController {
     @PostMapping("/save")
     public String saveUser(@ModelAttribute UserDto user) {
         userService.save(user);
-        return "redirect:/users/all/page";
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        if (auth != null && auth.getAuthorities().stream().anyMatch(a -> a.getAuthority().equals("ROLE_LIBRARIAN"))) {
+            return "redirect:/users/all/page";
+        } else {
+            return "redirect:/main";
+        }
     }
 
     @GetMapping("/{id}/updateForm")

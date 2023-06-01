@@ -114,7 +114,7 @@
                     <locations>
                         <location>filesystem:src/main/resources/flyway/migrations</location>
                     </locations>
-                    <url>jdbc:mysql://localhost:3306/library-test</url>
+                    <url>jdbc:mysql://localhost:3306/library</url>
                     <user>admin</user>
                     <password>admin</password>
                 </configuration>

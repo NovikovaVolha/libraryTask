@@ -109,7 +109,7 @@
     </head>
     <body>
         <div class="navbar">
-            <a href="#home">Профиль</a>
+            <a href="<c:url value="/profile"/>">Профиль</a>
             <div class="dropdown">
                 <button class="dropbtn">Меню
                     <i class="fa fa-caret-down"></i>
