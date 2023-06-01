@@ -1,5 +1,6 @@
 <%@ page contentType="text/html; charset=UTF-8" isELIgnored="false" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 
 <html>
     <head>
@@ -108,61 +109,76 @@
     </head>
     <body>
         <div class="navbar">
-            <a href="#home">Главная</a>
+            <a href="#home">Профиль</a>
             <div class="dropdown">
                 <button class="dropbtn">Меню
                     <i class="fa fa-caret-down"></i>
                 </button>
                 <div class="dropdown-content">
                     <div class="row">
+                        <sec:authorize access="hasRole('LIBRARIAN')">
                         <div class="column">
                             <h3>Авторы</h3>
                             <a href="<c:url value="/authors/all/page"/>">Список</a>
                             <a href="<c:url value="/authors/searchForm"/>">Поиск</a>
                             <a href="<c:url value="/authors/addForm"/>">Добавить</a>
                         </div>
+                        </sec:authorize>
                         <div class="column">
                             <h3>Заявки</h3>
-                            <a href="<c:url value="/requests/all/page"/>">Список</a>
-                            <a href="<c:url value="/requests/searchForm"/>">Поиск</a>
+                            <sec:authorize access="hasRole('LIBRARIAN')">
+                                <a href="<c:url value="/requests/all/page"/>">Список</a>
+                                <a href="<c:url value="/requests/searchForm"/>">Поиск</a>
+                            </sec:authorize>
                             <a href="<c:url value="/requests/addForm"/>">Добавить</a>
                         </div>
+                        <sec:authorize access="hasRole('LIBRARIAN')">
                         <div class="column">
                             <h3>Издательства</h3>
                             <a href="<c:url value="/publishers/all/page"/>">Список</a>
                             <a href="<c:url value="/publishers/searchForm"/>">Поиск</a>
                             <a href="<c:url value="/publishers/addForm"/>">Добавить</a>
                         </div>
+                        </sec:authorize>
                         <div class="column">
                             <h3>Каталоги</h3>
                             <a href="<c:url value="/catalogues/all/page"/>">Список</a>
                             <a href="<c:url value="/catalogues/searchForm"/>">Поиск</a>
-                            <a href="<c:url value="/catalogues/addForm"/>">Добавить</a>
+                            <sec:authorize access="hasRole('LIBRARIAN')">
+                                <a href="<c:url value="/catalogues/addForm"/>">Добавить</a>
+                            </sec:authorize>
                         </div>
                         <div class="column">
                             <h3>Категории</h3>
                             <a href="<c:url value="/categories/all/page"/>">Список</a>
                             <a href="<c:url value="/categories/searchForm"/>">Поиск</a>
-                            <a href="<c:url value="/categories/addForm"/>">Добавить</a>
+                            <sec:authorize access="hasRole('LIBRARIAN')">
+                                <a href="<c:url value="/categories/addForm"/>">Добавить</a>
+                            </sec:authorize>
                         </div>
                         <div class="column">
                             <h3>Книги</h3>
                             <a href="<c:url value="/books/all/page"/>">Список</a>
                             <a href="<c:url value="/books/searchForm"/>">Поиск</a>
-                            <a href="<c:url value="/books/addForm"/>">Добавить</a>
+                            <sec:authorize access="hasRole('LIBRARIAN')">
+                                <a href="<c:url value="/books/addForm"/>">Добавить</a>
+                            </sec:authorize>
                         </div>
+                        <sec:authorize access="hasRole('LIBRARIAN')">
                         <div class="column">
                             <h3>Пользователи</h3>
                             <a href="<c:url value="/users/all/page"/>">Список</a>
                             <a href="<c:url value="/users/searchForm"/>">Поиск</a>
                             <a href="<c:url value="/users/addForm"/>">Добавить</a>
                         </div>
+                        </sec:authorize>
                     </div>
                 </div>
             </div>
+            <a href="<c:url value="/logout" />">Выход</a>
         </div>
         <div style="padding:16px">
-            <h3>Добро пожаловать в систему!</h3>
+            <h1 align="center">Добро пожаловать в систему!</h1>
         </div>
     </body>
 </html>

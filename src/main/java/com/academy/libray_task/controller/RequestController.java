@@ -7,6 +7,8 @@ import com.academy.libray_task.dto.enums.RequestTypeDto;
 import com.academy.libray_task.service.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -33,8 +35,8 @@ public class RequestController {
 
     @GetMapping("/all/page")
     public String getAllRequestsPaginated(@RequestParam(defaultValue = "1") Integer page,
-                                       @RequestParam(defaultValue = "10") Integer pageSize,
-                                       Model model) {
+                                          @RequestParam(defaultValue = "10") Integer pageSize,
+                                          Model model) {
         Page<RequestDto> requests = requestService.findAllPaginated(page, pageSize);
         model.addAttribute("requests", requests.getContent());
         model.addAttribute("currentPage", page);
@@ -75,7 +77,12 @@ public class RequestController {
     @PostMapping("/save")
     public String saveRequest(@ModelAttribute RequestToSave request) {
         requestService.save(request);
-        return "redirect:/requests/all/page";
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        if (auth != null && auth.getAuthorities().stream().anyMatch(a -> a.getAuthority().equals("ROLE_LIBRARIAN"))) {
+            return "redirect:/requests/all/page";
+        } else {
+            return "redirect:/main";
+        }
     }
 
     @GetMapping("/{id}/updateForm")

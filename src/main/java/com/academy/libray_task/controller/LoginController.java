@@ -21,23 +21,23 @@ public class LoginController {
     private final UserValidator userValidator;
 
     @GetMapping("/")
-    public String getWelcomePage(){
+    public String getWelcomePage() {
         return "main/welcomePage";
     }
 
     @GetMapping("/registration")
-    public String getRegistrationForm(Model model){
+    public String getRegistrationForm(Model model) {
         model.addAttribute("user", new UserDto());
         model.addAttribute("roles", RoleDto.values());
         return "main/registrationForm";
     }
 
     @PostMapping("/registration")
-    public String createUser(@ModelAttribute  UserDto user, BindingResult bindingResult, Model model){
+    public String createUser(@ModelAttribute UserDto user, BindingResult bindingResult, Model model) {
         userValidator.validate(user, bindingResult);
 
-        if(bindingResult.hasErrors()){
-            model.addAttribute("errors",bindingResult.getFieldErrors());
+        if (bindingResult.hasErrors()) {
+            model.addAttribute("error", bindingResult.getFieldErrors());
             return "redirect:/registration";
         }
 
@@ -46,7 +46,7 @@ public class LoginController {
     }
 
     @GetMapping("/main")
-    public String getMainPage(){
+    public String getMainPage() {
         return "main/main";
     }
 

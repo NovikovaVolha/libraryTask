@@ -71,7 +71,7 @@
                             <td>
                                     <div class="username">
                                         <sf:input path="username" title="Обязательно к заполнению"/>
-                                        <sf:errors path="username" cssClass="error"></sf:errors>
+                                        <sf:errors path="username" cssClass="error">${error}</sf:errors>
                                     </div>
                             </td>
                         </tr>
@@ -82,7 +82,7 @@
                             <td>
                                     <div class="password">
                                         <sf:input path="password" title="Обязательно к заполнению"/>
-                                        <sf:errors path="password" cssClass="error"></sf:errors>
+                                        <sf:errors path="password" cssClass="error">${error}</sf:errors>
                                     </div>
                             </td>
                         </tr>

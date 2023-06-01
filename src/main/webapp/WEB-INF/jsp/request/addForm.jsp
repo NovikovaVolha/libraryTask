@@ -1,6 +1,7 @@
 <%@ page contentType="text/html; charset=UTF-8" isELIgnored="false" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="sf" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 
 <html>
     <head>
@@ -98,9 +99,11 @@
                 </div>
             </sf:form>
             <hr>
-            <div class="button">
-                <a href="<c:url value="/requests/all/page"/>"><button type="button">К списку заявок</button></a>
-            </div>
+            <sec:authorize access="hasRole('LIBRARIAN')">
+                <div class="button">
+                    <a href="<c:url value="/requests/all/page"/>"><button type="button">К списку заявок</button></a>
+                </div>
+            </sec:authorize>
         </div>
     </body>
 </html>
