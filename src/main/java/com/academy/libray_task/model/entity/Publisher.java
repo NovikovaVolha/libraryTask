@@ -33,7 +33,7 @@ public class Publisher {
 
     @Override
     public String toString() {
-        return name + ", " + country;
+        return name + " " + country;
     }
 
 }

@@ -14,7 +14,7 @@ public class StringToPublisherConverter implements Converter<String, Publisher> 
 
     @Override
     public Publisher convert(String source) {
-        String[] parts = source.split(", ");
+        String[] parts = source.split(" ");
 
         return publisherRepository.findPublisherByName(parts[0]);
     }
