@@ -64,6 +64,11 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public UserDto findByNameAndSurname(String name, String surname) {
+        return userMapper.toDto(userRepository.findUserByNameAndSurname(name, surname));
+    }
+
+    @Override
     public List<UserDto> findByPassport(String passport) {
         return userMapper.toDtoList(userRepository.findUserByPassport(passport));
     }

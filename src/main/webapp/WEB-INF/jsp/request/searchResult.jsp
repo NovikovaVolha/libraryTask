@@ -39,10 +39,10 @@
                             <td>${request.updatedAt}</td>
                             <td>
                                 <div class="button">
-                                    <a href="<c:url value="/${request.id}/updateForm"/>"><button type="button">Редактировать</button></a>
+                                    <a href="<c:url value="${request.id}/updateForm"/>"><button type="button">Редактировать</button></a>
                                 </div>
                                 <div class="button">
-                                    <a href="<c:url value="/${request.id}/delete"/>"><button type="button">Удалить</button></a>
+                                    <a href="<c:url value="${request.id}/delete"/>"><button type="button">Удалить</button></a>
                                 </div>
                             </td>
                         </tr>

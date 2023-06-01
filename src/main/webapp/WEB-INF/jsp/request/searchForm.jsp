@@ -17,8 +17,8 @@
                         <tr>
                             <td>
                                 <select form="searchForm" name="paramName">
-                                    <option name="reader" value="reader" selected>Библиотекарь</option>
-                                    <option name="librarian" value="librarian">Читатель</option>
+                                    <option name="reader" value="reader" selected>Читатель</option>
+                                    <option name="librarian" value="librarian">Библиотекарь</option>
                                     <option name="book" value="book">Книга</option>
                                     <option name="dateOfIssue" value="dateOfIssue">Дата выдачи</option>
                                     <option name="dateOfReturn" value="dateOfReturn">Дата возврата</option>

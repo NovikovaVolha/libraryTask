@@ -15,6 +15,8 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 @Service
@@ -72,7 +74,13 @@ public class BookServiceImpl implements BookService {
 
     @Override
     public List<BookDto> findByAuthor(String author) {
-        List<Author> authors = authorRepository.findAuthorBySurnameContainingIgnoreCase(author);
+        List<Author> authors = new ArrayList<>();
+        if (author.contains(" ")) {
+            String[] parts = author.split(" ");
+            authors.add(authorRepository.findAuthorByNameAndSurname(parts[0], parts[1]));
+        } else {
+            authors.addAll(authorRepository.findAuthorBySurnameContainingIgnoreCase(author));
+        }
         return bookMapper.toDtoList(bookRepository.findBooksByAuthorsIn(authors));
     }
 

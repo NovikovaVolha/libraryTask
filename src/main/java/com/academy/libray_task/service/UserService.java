@@ -19,6 +19,8 @@ public interface UserService {
 
     List<UserDto> findBySurname(String surname);
 
+    UserDto findByNameAndSurname(String name, String surname);
+
     List<UserDto> findByPassport(String passport);
 
     List<UserDto> findByPhoneNumber(String phoneNumber);

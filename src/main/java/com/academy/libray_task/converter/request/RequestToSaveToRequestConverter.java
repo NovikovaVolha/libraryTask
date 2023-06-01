@@ -41,7 +41,7 @@ public class RequestToSaveToRequestConverter implements Converter<RequestToSave,
         String[] readerNameAndSurname = requestToSave.getReader().split(" ");
         User reader = userRepository.findUserByNameAndSurname(readerNameAndSurname[0], readerNameAndSurname[1]);
 
-        String[] titleAndAuthors = requestToSave.getBook().split(" ");
+        String[] titleAndAuthors = requestToSave.getBook().split(" \\[");
         String title = titleAndAuthors[0];
         Book book = bookRepository.findBookByTitle(title);
 

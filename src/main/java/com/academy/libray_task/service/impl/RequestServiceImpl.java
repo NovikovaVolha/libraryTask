@@ -70,15 +70,17 @@ public class RequestServiceImpl implements RequestService {
     }
 
     @Override
-    public List<RequestDto> findByReader(String readerSurname) {
-        List<UserDto> readers = userService.findBySurname(readerSurname);
-        return requestMapper.toDtoList(requestRepository.findRequestsByReader(userMapper.toEntity(readers.get(0))));
+    public List<RequestDto> findByReader(String reader) {
+        String[] parts = reader.split(" ");
+        UserDto readerDto = userService.findByNameAndSurname(parts[0], parts[1]);
+        return requestMapper.toDtoList(requestRepository.findRequestsByReader(userMapper.toEntity(readerDto)));
     }
 
     @Override
-    public List<RequestDto> findByLibrarian(String librarianSurname) {
-        List<UserDto> librarians = userService.findBySurname(librarianSurname);
-        return requestMapper.toDtoList(requestRepository.findRequestsByLibrarian(userMapper.toEntity(librarians.get(0))));
+    public List<RequestDto> findByLibrarian(String librarian) {
+        String[] parts = librarian.split(" ");
+        UserDto librarianDto = userService.findByNameAndSurname(parts[0], parts[1]);
+        return requestMapper.toDtoList(requestRepository.findRequestsByLibrarian(userMapper.toEntity(librarianDto)));
     }
 
     @Override
